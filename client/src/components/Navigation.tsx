@@ -61,11 +61,6 @@ export function Navigation() {
               {link.name}
             </ScrollLink>
           ))}
-          <Button variant="default" size="sm" asChild>
-            <ScrollLink to="contact" smooth={true} duration={500} offset={-100} className="cursor-pointer">
-              Let's Talk
-            </ScrollLink>
-          </Button>
         </div>
 
         {/* Mobile Toggle */}
