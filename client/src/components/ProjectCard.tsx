@@ -1,0 +1,73 @@
+import { motion } from "framer-motion";
+import { ExternalLink, Github, CircuitBoard } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import type { Project } from "@shared/schema";
+
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+}
+
+export function ProjectCard({ project, index }: ProjectCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      <Card className="h-full flex flex-col hover:shadow-xl hover:border-primary/50 transition-all duration-300 group overflow-hidden border-border/50 bg-card">
+        <div className="h-48 bg-secondary/5 relative overflow-hidden flex items-center justify-center">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
+          
+          {/* Decorative tech pattern */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
+          
+          <CircuitBoard className="w-16 h-16 text-primary/20 group-hover:text-primary/40 transition-colors duration-500 transform group-hover:scale-110" />
+        </div>
+        
+        <CardHeader>
+          <div className="flex justify-between items-start gap-4">
+            <div>
+              <span className="text-xs font-semibold text-primary mb-2 block uppercase tracking-wider">
+                {project.category}
+              </span>
+              <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">
+                {project.title}
+              </CardTitle>
+            </div>
+            {project.link && (
+              <a 
+                href={project.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <ExternalLink className="w-5 h-5" />
+              </a>
+            )}
+          </div>
+        </CardHeader>
+        
+        <CardContent className="flex-grow">
+          <p className="text-muted-foreground leading-relaxed text-sm">
+            {project.description}
+          </p>
+        </CardContent>
+        
+        <CardFooter className="flex flex-wrap gap-2 pt-4 border-t border-border/50 bg-secondary/5 mt-auto">
+          {project.technologies?.map((tech) => (
+            <Badge 
+              key={tech} 
+              variant="secondary" 
+              className="bg-background text-xs font-medium border border-border/50"
+            >
+              {tech}
+            </Badge>
+          ))}
+        </CardFooter>
+      </Card>
+    </motion.div>
+  );
+}
