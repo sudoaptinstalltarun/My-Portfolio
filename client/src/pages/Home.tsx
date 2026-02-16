@@ -328,59 +328,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-card p-8 rounded-2xl border border-border shadow-lg">
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">Name</label>
-                  <Input 
-                    {...form.register("name")}
-                    placeholder="Your Name"
-                    className="h-12 bg-background"
-                  />
-                  {form.formState.errors.name && (
-                    <p className="text-sm text-destructive">{form.formState.errors.name.message}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">Email</label>
-                  <Input 
-                    {...form.register("email")}
-                    type="email"
-                    placeholder="your.email@example.com"
-                    className="h-12 bg-background"
-                  />
-                  {form.formState.errors.email && (
-                    <p className="text-sm text-destructive">{form.formState.errors.email.message}</p>
-                  )}
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">Message</label>
-                  <Textarea 
-                    {...form.register("message")}
-                    placeholder="How can I help you?"
-                    className="min-h-[150px] bg-background resize-none"
-                  />
-                  {form.formState.errors.message && (
-                    <p className="text-sm text-destructive">{form.formState.errors.message.message}</p>
-                  )}
-                </div>
-
-                <Button 
-                  type="submit" 
-                  className="w-full h-12 text-base font-semibold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all"
-                  disabled={isPending}
-                >
-                  {isPending ? "Sending..." : (
-                    <>
-                      Send Message <Send className="ml-2 w-4 h-4" />
-                    </>
-                  )}
-                </Button>
-              </form>
-            </div>
           </div>
         </div>
       </section>
