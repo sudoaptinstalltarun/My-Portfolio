@@ -70,7 +70,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/20">
       <Navigation />
-
       {/* Hero Section */}
       <section 
         id="hero" 
@@ -137,7 +136,6 @@ export default function Home() {
           <ChevronDown className="w-8 h-8" />
         </motion.div>
       </section>
-
       {/* About Section */}
       <section id="about" className="py-24 bg-secondary/5">
         <div className="container mx-auto px-4 md:px-6">
@@ -189,7 +187,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Skills Section */}
       <section id="skills" className="py-24">
         <div className="container mx-auto px-4 md:px-6">
@@ -218,7 +215,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Experience Section */}
       <section id="experience" className="py-24 bg-secondary/5">
         <div className="container mx-auto px-4 md:px-6">
@@ -229,7 +225,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Projects Section */}
       <section id="projects" className="py-24">
         <div className="container mx-auto px-4 md:px-6">
@@ -242,7 +237,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Education Section */}
       <section id="education" className="py-24 bg-secondary/5">
         <div className="container mx-auto px-4 md:px-6">
@@ -272,7 +266,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Contact Section */}
       <section id="contact" className="py-24 relative overflow-hidden">
         {/* Background Accents */}
@@ -320,9 +313,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h4 className="font-bold text-lg">Location</h4>
-                    <p className="text-muted-foreground">
-                      Bengaluru, Karnataka, India
-                    </p>
+                    <p className="text-muted-foreground">Mangalore, Karnataka, India</p>
                   </div>
                 </div>
               </div>
@@ -331,7 +322,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="py-8 border-t border-border bg-background text-center">
         <div className="container mx-auto px-4">
