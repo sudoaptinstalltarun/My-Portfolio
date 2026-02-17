@@ -114,10 +114,10 @@ export default function Home() {
             </motion.div>
 
             <motion.div variants={itemVariants} className="mt-12 flex justify-center gap-6 text-muted-foreground">
-              <a href="#" className="hover:text-primary transition-colors hover:scale-110 transform duration-200">
+              <a href="https://github.com/tarun-kumar-10" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors hover:scale-110 transform duration-200">
                 <Github className="w-6 h-6" />
               </a>
-              <a href="#" className="hover:text-primary transition-colors hover:scale-110 transform duration-200">
+              <a href="https://www.linkedin.com/in/tarun-kumar-robotics" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors hover:scale-110 transform duration-200">
                 <Linkedin className="w-6 h-6" />
               </a>
               <a href="mailto:tarunkotian10@gmail.com" className="hover:text-primary transition-colors hover:scale-110 transform duration-200">
