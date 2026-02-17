@@ -275,50 +275,49 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeading title="Get In Touch" subtitle="Contact Me" />
           
-          <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             {/* Contact Info */}
-            <div className="space-y-8">
-              <p className="text-lg text-muted-foreground">
+            <div className="space-y-8 text-center">
+              <p className="text-xl text-muted-foreground">
                 Whether you have a question about my projects, want to collaborate on a robotics initiative, or just want to say hi, I'd love to hear from you.
               </p>
               
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg text-primary mt-1">
-                    <Mail className="w-6 h-6" />
+              <div className="grid sm:grid-cols-3 gap-8 pt-4">
+                <div className="flex flex-col items-center gap-4">
+                  <div className="p-4 bg-primary/10 rounded-2xl text-primary">
+                    <Mail className="w-8 h-8" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg">Email</h4>
+                    <h4 className="font-bold text-lg mb-1">Email</h4>
                     <a href="mailto:tarunkotian10@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
                       tarunkotian10@gmail.com
                     </a>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-accent/10 rounded-lg text-accent mt-1">
-                    <Phone className="w-6 h-6" />
+                <div className="flex flex-col items-center gap-4">
+                  <div className="p-4 bg-accent/10 rounded-2xl text-accent">
+                    <Phone className="w-8 h-8" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg">Phone</h4>
+                    <h4 className="font-bold text-lg mb-1">Phone</h4>
                     <a href="tel:+918618447140" className="text-muted-foreground hover:text-primary transition-colors">
                       +91 8618447140
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-secondary/10 rounded-lg text-secondary mt-1">
-                    <MapPin className="w-6 h-6" />
+                <div className="flex flex-col items-center gap-4">
+                  <div className="p-4 bg-secondary/10 rounded-2xl text-secondary">
+                    <MapPin className="w-8 h-8" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-lg">Location</h4>
+                    <h4 className="font-bold text-lg mb-1">Location</h4>
                     <p className="text-muted-foreground">Mangalore, Karnataka, India</p>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
