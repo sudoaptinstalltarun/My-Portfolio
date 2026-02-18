@@ -44,45 +44,45 @@ export class DatabaseStorage implements IStorage {
       await db.insert(projects).values([
         {
           title: "Autonomous Mobile Robot",
-          description: "Built differential drive robot for autonomous indoor navigation using ROS2, LiDAR, and SLAM on Raspberry Pi.",
-          technologies: ["ROS2", "LiDAR", "SLAM", "Raspberry Pi"],
+          description: "Developed a sophisticated differential drive robot capable of autonomous indoor navigation. Integrated ROS2 with LiDAR for real-time SLAM (Simultaneous Localization and Mapping), enabling the robot to create precise 2D maps of unknown environments and navigate through them avoiding obstacles. Implemented a robust control stack on Raspberry Pi with custom sensor fusion algorithms.",
+          technologies: ["ROS2", "LiDAR", "SLAM", "Raspberry Pi", "Python", "C++"],
           category: "Robotics",
-          link: "https://github.com"
+          link: "https://github.com/sudoaptinstalltarun"
         },
         {
           title: "AgriDrone Audit System",
-          description: "Developed drone-based crop monitoring system using computer vision with YOLO and OpenCV.",
-          technologies: ["YOLO", "OpenCV", "UAV Systems"],
+          description: "An advanced UAV-based solution for precision agriculture. Built a custom drone platform integrated with a computer vision pipeline using YOLOv5 for real-time crop health monitoring and pest detection. The system automates field auditing by processing high-resolution aerial imagery to generate detailed vegetation index maps and actionable agricultural data.",
+          technologies: ["YOLOv5", "OpenCV", "UAV Systems", "ArduPilot", "Python"],
           category: "UAV",
-          link: "https://github.com"
+          link: "https://github.com/sudoaptinstalltarun"
         },
         {
           title: "Smart Surveillance Robot",
-          description: "Designed remote-controlled robot with real-time video surveillance using Raspberry Pi, Arduino, and OpenCV.",
-          technologies: ["Raspberry Pi", "Arduino", "OpenCV"],
+          description: "Designed and implemented a versatile remote-controlled surveillance platform. Features a low-latency real-time video streaming system with integrated computer vision for motion detection and face recognition. The hardware architecture utilizes a dual-processor setup (Raspberry Pi and Arduino) to balance high-level processing with precise motor control.",
+          technologies: ["Raspberry Pi", "Arduino", "OpenCV", "Embedded C", "Python"],
           category: "Robotics",
-          link: "https://github.com"
+          link: "https://github.com/sudoaptinstalltarun"
         },
         {
           title: "Smart Room Occupancy Detection",
-          description: "Developed AI model for real-time room occupancy prediction.",
-          technologies: ["AI/ML", "Python"],
+          description: "Created an AI-driven system for intelligent building management. Developed and trained a custom machine learning model to predict room occupancy with high accuracy using environmental sensor data. The system optimizes energy consumption by dynamically controlling lighting and HVAC systems based on real-time presence detection.",
+          technologies: ["AI/ML", "TensorFlow", "Python", "Scikit-learn", "IoT"],
           category: "AI",
-          link: "https://github.com"
+          link: "https://github.com/sudoaptinstalltarun"
         },
         {
           title: "ArticulateX Robotic Arm",
-          description: "Built articulated robotic arm for precise motion and object handling.",
-          technologies: ["Robotics Design", "Embedded Control"],
+          description: "Engineered a high-precision 5-DOF articulated robotic arm. Focused on inverse kinematics implementation for smooth trajectory planning and accurate end-effector positioning. Developed a custom embedded control interface for complex object handling tasks, incorporating feedback loops for enhanced stability and repeatability.",
+          technologies: ["Robotics Design", "Embedded Control", "Kinematics", "SolidWorks"],
           category: "Robotics",
-          link: "https://github.com"
+          link: "https://github.com/sudoaptinstalltarun"
         },
         {
           title: "Autonomous GPS Drone",
-          description: "Developed GPS-guided autonomous drone with auto-landing capability.",
-          technologies: ["UAV Systems", "ArduPilot"],
+          description: "Developed a fully autonomous quadcopter utilizing GPS-guided navigation. Configured the ArduPilot flight stack for mission planning, including waypoint navigation, automated take-off, and precision landing. Integrated failsafe mechanisms and real-time telemetry for enhanced flight safety and mission reliability in various outdoor conditions.",
+          technologies: ["UAV Systems", "ArduPilot", "GPS Navigation", "Flight Control"],
           category: "UAV",
-          link: "https://github.com"
+          link: "https://github.com/sudoaptinstalltarun"
         }
       ]);
 
