@@ -1,9 +1,5 @@
+import { type User, type InsertUser, projects, skills, experience, education, contactMessages, type Project, type Skill, type Experience, type Education, type ContactMessage, type InsertContactMessage } from "@shared/schema";
 import { db } from "./db";
-import {
-  projects, skills, experience, education, contactMessages,
-  type InsertContactMessage, type ContactMessage,
-  type Project, type Skill, type Experience, type Education
-} from "@shared/schema";
 
 export interface IStorage {
   getProjects(): Promise<Project[]>;
@@ -11,8 +7,6 @@ export interface IStorage {
   getExperience(): Promise<Experience[]>;
   getEducation(): Promise<Education[]>;
   createContactMessage(message: InsertContactMessage): Promise<ContactMessage>;
-  
-  // Seed methods
   seedData(): Promise<void>;
 }
 
