@@ -34,6 +34,7 @@ import {
   useEducation, 
   useContact 
 } from "@/hooks/use-portfolio";
+import profileImg from "@assets/482024-01-25_15-28-17_1771426037578.jpg";
 
 // Hero Animation Variants
 const containerVariants = {
@@ -147,11 +148,12 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-square rounded-2xl overflow-hidden bg-white shadow-2xl relative z-10 border border-border">
-                {/* Placeholder for Profile Image if user adds one later */}
-                <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-slate-300">
-                  <span className="text-9xl font-display font-bold opacity-20">TK</span>
-                </div>
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl relative z-10 border border-border">
+                <img 
+                  src={profileImg} 
+                  alt="Tarun Kumar" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-primary rounded-2xl -z-10" />
             </motion.div>
@@ -193,7 +195,7 @@ export default function Home() {
           <SectionHeading title="Technical Expertise" subtitle="My Toolkit" />
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {skills.map((skillGroup, idx) => (
+            {skills.map((skillGroup: any, idx: number) => (
               <motion.div
                 key={skillGroup.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -204,7 +206,7 @@ export default function Home() {
               >
                 <h3 className="text-xl font-bold mb-4 text-primary">{skillGroup.category}</h3>
                 <div className="flex flex-wrap gap-2">
-                  {skillGroup.items.map((skill) => (
+                  {skillGroup.items.map((skill: string) => (
                     <Badge key={skill} variant="outline" className="text-sm py-1 px-3 bg-secondary/5">
                       {skill}
                     </Badge>
@@ -231,7 +233,7 @@ export default function Home() {
           <SectionHeading title="Featured Projects" subtitle="What I've Built" />
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+            {projects.map((project: any, index: number) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
@@ -243,7 +245,7 @@ export default function Home() {
           <SectionHeading title="Education" subtitle="Academic Background" />
           
           <div className="max-w-4xl mx-auto grid gap-6">
-            {education.map((edu, idx) => (
+            {education.map((edu: any, idx: number) => (
               <motion.div
                 key={edu.id}
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
