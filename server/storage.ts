@@ -38,44 +38,51 @@ export class DatabaseStorage implements IStorage {
       await db.insert(projects).values([
         {
           title: "Autonomous Mobile Robot",
-          description: "Developed a sophisticated differential drive robot capable of autonomous indoor navigation. Integrated ROS2 with LiDAR for real-time SLAM (Simultaneous Localization and Mapping), enabling the robot to create precise 2D maps of unknown environments and navigate through them avoiding obstacles. Implemented a robust control stack on Raspberry Pi with custom sensor fusion algorithms.",
-          technologies: ["ROS2", "LiDAR", "SLAM", "Raspberry Pi", "Python", "C++"],
+          description: "A custom-built differential drive robot designed for autonomous navigation and mapping in indoor environments. Powered by ROS 2 Jazzy Jalisco on a Raspberry Pi 5/4, it utilizes a robust hardware-software architecture to perform Simultaneous Localization and Mapping (SLAM) and autonomous path planning.",
+          technologies: ["ROS2", "Python", "Raspberry Pi", "SLAM", "Path Planning"],
           category: "Robotics",
           link: "https://github.com/sudoaptinstalltarun"
         },
         {
-          title: "AgriDrone Audit System",
-          description: "An advanced UAV-based solution for precision agriculture. Built a custom drone platform integrated with a computer vision pipeline using YOLOv5 for real-time crop health monitoring and pest detection. The system automates field auditing by processing high-resolution aerial imagery to generate detailed vegetation index maps and actionable agricultural data.",
-          technologies: ["YOLOv5", "OpenCV", "UAV Systems", "ArduPilot", "Python"],
+          title: "AgriDrone Audit",
+          description: "Drone-based Intelligent ET sensing system and irrigation water use accounting system for irrigation commands. Developed as part of Team Challengers to optimize agricultural water management through precise aerial sensing.",
+          technologies: ["yolo", "OpenCV", "UAV Systems", "Agriculture Tech"],
           category: "UAV",
           link: "https://github.com/sudoaptinstalltarun"
         },
         {
-          title: "Smart Surveillance Robot",
-          description: "Designed and implemented a versatile remote-controlled surveillance platform. Features a low-latency real-time video streaming system with integrated computer vision for motion detection and face recognition. The hardware architecture utilizes a dual-processor setup (Raspberry Pi and Arduino) to balance high-level processing with precise motor control.",
-          technologies: ["Raspberry Pi", "Arduino", "OpenCV", "Embedded C", "Python"],
-          category: "Robotics",
-          link: "https://github.com/sudoaptinstalltarun"
-        },
-        {
-          title: "Smart Room Occupancy Detection",
-          description: "Created an AI-driven system for intelligent building management. Developed and trained a custom machine learning model to predict room occupancy with high accuracy using environmental sensor data. The system optimizes energy consumption by dynamically controlling lighting and HVAC systems based on real-time presence detection.",
-          technologies: ["AI/ML", "TensorFlow", "Python", "Scikit-learn", "IoT"],
+          title: "SmartRoomOccupancy",
+          description: "An AI/ML based model developed for intelligent room occupancy detection. Focused on data modeling and artificial intelligence to create efficient space management solutions.",
+          technologies: ["Artificial Intelligence (AI)", "Data Modeling", "Python"],
           category: "AI",
           link: "https://github.com/sudoaptinstalltarun"
         },
         {
-          title: "ArticulateX Robotic Arm",
-          description: "Engineered a high-precision 5-DOF articulated robotic arm. Focused on inverse kinematics implementation for smooth trajectory planning and accurate end-effector positioning. Developed a custom embedded control interface for complex object handling tasks, incorporating feedback loops for enhanced stability and repeatability.",
-          technologies: ["Robotics Design", "Embedded Control", "Kinematics", "SolidWorks"],
+          title: "Smart Surveillance Robot",
+          description: "A Raspberry Pi-powered smart surveillance robot featuring a live camera feed and remote movement control. Designed for home security, remote monitoring, and as a learning platform for robotics integration.",
+          technologies: ["Raspberry Pi", "Arduino IDE", "Python", "Live Streaming"],
           category: "Robotics",
           link: "https://github.com/sudoaptinstalltarun"
         },
         {
-          title: "Autonomous GPS Drone",
-          description: "Developed a fully autonomous quadcopter utilizing GPS-guided navigation. Configured the ArduPilot flight stack for mission planning, including waypoint navigation, automated take-off, and precision landing. Integrated failsafe mechanisms and real-time telemetry for enhanced flight safety and mission reliability in various outdoor conditions.",
-          technologies: ["UAV Systems", "ArduPilot", "GPS Navigation", "Flight Control"],
+          title: "ArticulateX",
+          description: "A highly versatile robotic arm that combines advanced revolute and articulated joints for precision and flexibility. Designed for complex manipulation tasks with a focus on mechanical engineering excellence.",
+          technologies: ["Robotic arm", "Precision Engineering", "Articulated Joints"],
+          category: "Robotics",
+          link: "https://github.com/sudoaptinstalltarun"
+        },
+        {
+          title: "Autonomous Drone",
+          description: "A highly stable and efficient drone equipped with GPS technology, featuring precise location holding and autonomous emergency landing capabilities. Developed for high-reliability flight missions.",
+          technologies: ["GPS Technology", "Autonomous Landing", "UAV", "Flight Stability"],
           category: "UAV",
+          link: "https://github.com/sudoaptinstalltarun"
+        },
+        {
+          title: "Portable Catapult Launcher for UAV",
+          description: "Design and analysis of a portable catapult launch system for UAVs. Developed at the National Institute of Technology Karnataka with a focus on mechanical robustness and field deployability.",
+          technologies: ["Solidworks", "Ansys Workbench", "Mechanical Design", "UAV Launchers"],
+          category: "Engineering",
           link: "https://github.com/sudoaptinstalltarun"
         }
       ]);
