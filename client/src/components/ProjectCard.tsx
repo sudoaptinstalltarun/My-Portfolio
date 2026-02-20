@@ -81,12 +81,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </CardContent>
         
-        <CardFooter className="flex flex-wrap gap-2 pt-4 border-t border-border/50 bg-secondary/5 mt-auto">
+        <CardFooter className="flex flex-wrap gap-2 pt-4 border-t border-border/50 bg-secondary/5 mt-auto overflow-visible">
           {project.technologies?.map((tech) => (
             <Badge 
               key={tech} 
               variant="secondary" 
-              className="bg-background text-xs font-medium border border-border/50"
+              className="bg-background text-xs font-medium border border-border/50 hover-elevate active-elevate-2"
             >
               {tech}
             </Badge>
