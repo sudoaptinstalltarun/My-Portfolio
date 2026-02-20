@@ -1,8 +1,10 @@
-import { motion } from "framer-motion";
-import { ExternalLink, Github, CircuitBoard } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLink, Github, CircuitBoard, ChevronDown, ChevronUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import type { Project } from "@shared/schema";
+import { useState } from "react";
 
 interface ProjectCardProps {
   project: Project;
@@ -10,6 +12,11 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
+  const [isExpanded, setIsOpen] = useState(false);
+  const description = project.description || "";
+  const isLongDescription = description.length > 150;
+  const displayDescription = isExpanded ? description : (isLongDescription ? `${description.substring(0, 150)}...` : description);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -51,9 +58,27 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </CardHeader>
         
         <CardContent className="flex-grow">
-          <p className="text-muted-foreground leading-relaxed text-sm">
-            {project.description}
-          </p>
+          <div className="space-y-4">
+            <div className="relative">
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                {displayDescription}
+              </p>
+              {isLongDescription && (
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={() => setIsOpen(!isExpanded)}
+                  className="mt-2 h-8 px-2 text-primary hover:bg-primary/5"
+                >
+                  {isExpanded ? (
+                    <span className="flex items-center gap-1">Show Less <ChevronUp className="w-4 h-4" /></span>
+                  ) : (
+                    <span className="flex items-center gap-1">Read More <ChevronDown className="w-4 h-4" /></span>
+                  )}
+                </Button>
+              )}
+            </div>
+          </div>
         </CardContent>
         
         <CardFooter className="flex flex-wrap gap-2 pt-4 border-t border-border/50 bg-secondary/5 mt-auto">
