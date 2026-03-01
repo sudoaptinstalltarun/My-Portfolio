@@ -86,8 +86,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             project.technologies.map((tech) => (
               <Badge 
                 key={tech} 
-                variant="secondary" 
-                className="bg-background text-[10px] sm:text-xs font-medium border border-border/50 hover-elevate active-elevate-2 px-2 py-0.5"
+                variant="outline" 
+                className="bg-[hsl(var(--primary-muted))] text-primary border-primary/30 font-bold hover:bg-primary hover:text-white transition-all duration-300 text-[10px] sm:text-xs px-2 py-0.5 rounded-md"
               >
                 {tech}
               </Badge>

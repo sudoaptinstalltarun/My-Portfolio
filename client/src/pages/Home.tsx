@@ -245,7 +245,7 @@ export default function Home() {
           <SectionHeading title="Education" subtitle="Academic Background" />
           
           <div className="max-w-4xl mx-auto grid gap-6">
-            {education.map((edu: any, idx: number) => (
+            {education.map((edu, idx) => (
               <motion.div
                 key={edu.id}
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
