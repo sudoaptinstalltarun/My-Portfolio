@@ -81,16 +81,20 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </CardContent>
         
-        <CardFooter className="flex flex-wrap gap-2 pt-4 border-t border-border/50 bg-secondary/5 mt-auto overflow-visible">
-          {project.technologies?.map((tech) => (
-            <Badge 
-              key={tech} 
-              variant="secondary" 
-              className="bg-background text-xs font-medium border border-border/50 hover-elevate active-elevate-2"
-            >
-              {tech}
-            </Badge>
-          ))}
+        <CardFooter className="flex flex-wrap gap-2 pt-4 border-t border-border/50 bg-secondary/5 mt-auto overflow-visible min-h-[64px]">
+          {project.technologies && project.technologies.length > 0 ? (
+            project.technologies.map((tech) => (
+              <Badge 
+                key={tech} 
+                variant="secondary" 
+                className="bg-background text-[10px] sm:text-xs font-medium border border-border/50 hover-elevate active-elevate-2 px-2 py-0.5"
+              >
+                {tech}
+              </Badge>
+            ))
+          ) : (
+            <span className="text-xs text-muted-foreground italic">No technologies listed</span>
+          )}
         </CardFooter>
       </Card>
     </motion.div>
