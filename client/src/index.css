@@ -92,3 +92,13 @@
 .glass-panel {
   @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg;
 }
+/* Professional Cleanup: Hiding Replit Branding */
+#replit-badge, 
+.replit-badge, 
+.replit-badge-root, 
+iframe[src*="replit.com/public/badge"] {
+display: none !important;
+visibility: hidden !important;
+opacity: 0 !important;
+pointer-events: none !important;
+}
