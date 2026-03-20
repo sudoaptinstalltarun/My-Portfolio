@@ -1,5 +1,11 @@
 import { z } from 'zod';
-import { insertContactMessageSchema, projects, skills, experience, education } from './schema';
+import { 
+  insertContactMessageSchema, 
+  projectSchema, 
+  skillSchema, 
+  experienceSchema, 
+  educationSchema 
+} from './schema';
 
 export const api = {
   projects: {
@@ -7,7 +13,7 @@ export const api = {
       method: 'GET' as const,
       path: '/api/projects' as const,
       responses: {
-        200: z.array(z.custom<typeof projects.$inferSelect>()),
+        200: z.array(projectSchema),
       },
     },
   },
@@ -16,7 +22,7 @@ export const api = {
       method: 'GET' as const,
       path: '/api/skills' as const,
       responses: {
-        200: z.array(z.custom<typeof skills.$inferSelect>()),
+        200: z.array(skillSchema),
       },
     },
   },
@@ -25,7 +31,7 @@ export const api = {
       method: 'GET' as const,
       path: '/api/experience' as const,
       responses: {
-        200: z.array(z.custom<typeof experience.$inferSelect>()),
+        200: z.array(experienceSchema),
       },
     },
   },
@@ -34,7 +40,7 @@ export const api = {
       method: 'GET' as const,
       path: '/api/education' as const,
       responses: {
-        200: z.array(z.custom<typeof education.$inferSelect>()),
+        200: z.array(educationSchema),
       },
     },
   },
