@@ -1,4 +1,4 @@
-import { type User, type InsertUser, projects, skills, experience, education, contactMessages, type Project, type Skill, type Experience, type Education, type ContactMessage, type InsertContactMessage } from "@shared/schema";
+import { projects, skills, experience, education, contactMessages, type Project, type Skill, type Experience, type Education, type ContactMessage, type InsertContactMessage } from "@shared/schema";
 import { db } from "./db";
 
 export interface IStorage {
@@ -93,7 +93,10 @@ export class DatabaseStorage implements IStorage {
           link: "https://github.com/sudoaptinstalltarun"
         }
       ]);
+    }
 
+    const existingSkills = await this.getSkills();
+    if (existingSkills.length === 0) {
       await db.insert(skills).values([
         {
           category: "Robotics & Autonomous Systems",
@@ -128,7 +131,10 @@ export class DatabaseStorage implements IStorage {
           items: ["SOLIDWORKS CSWA", "MATLAB Onramp", "Simulink Onramp", "Python Foundation"]
         }
       ]);
+    }
 
+    const existingExperience = await this.getExperience();
+    if (existingExperience.length === 0) {
       await db.insert(experience).values([
         {
           role: "Project Intern — Robotics Research",
@@ -149,7 +155,10 @@ export class DatabaseStorage implements IStorage {
           description: "Contributed to UAV and robotics hardware development projects including the AgriDrone Audit System. Worked on drone assembly, flight testing, and AI-based crop monitoring integration."
         }
       ]);
+    }
 
+    const existingEducation = await this.getEducation();
+    if (existingEducation.length === 0) {
       await db.insert(education).values([
         {
           degree: "B.E. Robotics and Automation Engineering",
@@ -169,6 +178,7 @@ export class DatabaseStorage implements IStorage {
       ]);
     }
   }
+
 }
 
 export const storage = new DatabaseStorage();
