@@ -1,7 +1,7 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, CircuitBoard, ChevronDown, ChevronUp } from "lucide-react";
+import { motion } from "framer-motion";
+import { ExternalLink, Github, Cpu, ChevronDown, ChevronUp, CircuitBoard } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@shared/schema";
 import { useState } from "react";
@@ -19,83 +19,68 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      className="h-full"
     >
-      <Card className="h-full flex flex-col hover:shadow-xl hover:border-primary/50 transition-all duration-300 group overflow-hidden border-border/50 bg-card">
-        <div className="h-48 bg-secondary/5 relative overflow-hidden flex items-center justify-center">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
-          
-          {/* Decorative tech pattern */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
-          
-          <CircuitBoard className="w-16 h-16 text-primary/20 group-hover:text-primary/40 transition-colors duration-500 transform group-hover:scale-110" />
+      <Card className="h-full flex flex-col bg-white/[0.02] border-white/10 hover:border-white/20 transition-all duration-300 group overflow-hidden shadow-none rounded-[2rem]">
+        <div className="h-52 bg-white/[0.03] relative overflow-hidden flex items-center justify-center">
+          <CircuitBoard className="w-16 h-16 text-white/10 group-hover:text-primary transition-colors duration-500" />
+          <Badge className="absolute top-4 right-4 bg-white/10 border-white/10 text-white font-medium px-3 py-1 text-[10px] uppercase tracking-wider">
+            {project.category}
+          </Badge>
         </div>
         
-        <CardHeader>
+        <CardHeader className="px-6 pt-6 pb-2">
           <div className="flex justify-between items-start gap-4">
-            <div>
-              <span className="text-xs font-semibold text-primary mb-2 block uppercase tracking-wider">
-                {project.category}
-              </span>
-              <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">
-                {project.title}
-              </CardTitle>
-            </div>
+            <CardTitle className="text-xl font-display font-bold group-hover:text-primary transition-colors leading-tight">
+              {project.title}
+            </CardTitle>
             {project.link && (
-              <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <ExternalLink className="w-5 h-5" />
-              </a>
+              <Button size="icon" variant="ghost" className="rounded-full h-8 w-8 hover:bg-white/10 transition-all" asChild>
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </Button>
             )}
           </div>
         </CardHeader>
         
-        <CardContent className="flex-grow">
+        <CardContent className="flex-grow px-6 pb-6 mt-auto">
           <div className="space-y-4">
-            <div className="relative">
-              <p className="text-muted-foreground leading-relaxed text-sm">
-                {displayDescription}
-              </p>
-              {isLongDescription && (
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  onClick={() => setIsOpen(!isExpanded)}
-                  className="mt-2 h-8 px-2 text-primary hover:bg-primary/5"
+            <p className="text-muted-foreground leading-relaxed text-sm font-light">
+              {displayDescription}
+            </p>
+            {isLongDescription && (
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => setIsOpen(!isExpanded)}
+                className="mt-1 h-8 px-0 text-primary hover:bg-transparent font-medium flex items-center gap-1 group/btn"
+              >
+                {isExpanded ? (
+                  <>Show Less <ChevronUp className="w-4 h-4" /></>
+                ) : (
+                  <>Read More <ChevronDown className="w-4 h-4" /></>
+                )}
+              </Button>
+            )}
+            
+            <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+              {project.technologies?.map((tech) => (
+                <Badge 
+                  key={tech} 
+                  variant="outline" 
+                  className="bg-white/5 border-white/10 text-[10px] font-medium uppercase tracking-wider px-2 py-0.5 rounded-md"
                 >
-                  {isExpanded ? (
-                    <span className="flex items-center gap-1">Show Less <ChevronUp className="w-4 h-4" /></span>
-                  ) : (
-                    <span className="flex items-center gap-1">Read More <ChevronDown className="w-4 h-4" /></span>
-                  )}
-                </Button>
-              )}
+                  {tech}
+                </Badge>
+              ))}
             </div>
           </div>
         </CardContent>
-        
-        <CardFooter className="flex flex-wrap gap-2 pt-4 border-t border-border/50 bg-secondary/5 mt-auto overflow-visible min-h-[64px]">
-          {project.technologies && project.technologies.length > 0 ? (
-            project.technologies.map((tech) => (
-              <Badge 
-                key={tech} 
-                variant="outline" 
-                className="bg-[hsl(var(--primary-muted))] text-primary border-primary/30 font-bold hover:bg-primary hover:text-white transition-all duration-300 text-[10px] sm:text-xs px-2 py-0.5 rounded-md"
-              >
-                {tech}
-              </Badge>
-            ))
-          ) : (
-            <span className="text-xs text-muted-foreground italic">No technologies listed</span>
-          )}
-        </CardFooter>
       </Card>
     </motion.div>
   );

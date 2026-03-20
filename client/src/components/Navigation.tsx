@@ -25,63 +25,81 @@ export function Navigation() {
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "glass-panel py-3"
-          : "bg-transparent py-6"
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "py-4" : "py-6"
       }`}
     >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <ScrollLink
-          to="hero"
-          smooth={true}
-          duration={500}
-          className="flex items-center gap-2 cursor-pointer group"
+      <div className="container mx-auto px-4 md:px-6">
+        <div 
+          className={`flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500 ${
+            scrolled 
+              ? "glass border-white/10 shadow-2xl" 
+              : "bg-transparent border-transparent"
+          }`}
         >
-          <div className="bg-primary/10 p-2 rounded-lg group-hover:bg-primary/20 transition-colors">
-            <Terminal className="w-6 h-6 text-primary" />
+          <ScrollLink 
+            to="hero" 
+            smooth={true} 
+            duration={500}
+            className="flex items-center gap-2 cursor-pointer group"
+          >
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform shadow-lg shadow-primary/20">
+              <Terminal className="w-6 h-6 text-white" />
+            </div>
+            <span className="font-display font-black text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 group-hover:from-primary group-hover:to-accent transition-all">
+              TARUN.
+            </span>
+          </ScrollLink>
+
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <ScrollLink
+                key={link.name}
+                to={link.to}
+                smooth={true}
+                spy={true}
+                duration={500}
+                offset={-100}
+                activeClass="text-primary font-bold after:scale-x-100"
+                className="relative text-sm font-medium text-muted-foreground hover:text-white cursor-pointer transition-colors py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:transition-transform after:origin-right hover:after:origin-left hover:after:scale-x-100"
+              >
+                {link.name}
+              </ScrollLink>
+            ))}
+            <Button size="sm" variant="outline" className="rounded-xl px-6 border-white/10 glass hover:bg-white/10 transition-all duration-300 mr-2" asChild>
+              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                Resume
+              </a>
+            </Button>
+            <Button size="sm" className="rounded-xl px-6 bg-primary hover:bg-primary/90 glow-primary transition-all duration-300" asChild>
+              <ScrollLink to="contact" smooth={true} offset={-100}>
+                Hire Me
+              </ScrollLink>
+            </Button>
           </div>
-          <span className="font-display font-bold text-xl tracking-tight">
-            Tarun<span className="text-primary">.dev</span>
-          </span>
-        </ScrollLink>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <ScrollLink
-              key={link.name}
-              to={link.to}
-              smooth={true}
-              duration={500}
-              offset={-100}
-              className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors cursor-pointer"
-            >
-              {link.name}
-            </ScrollLink>
-          ))}
+          {/* Mobile Toggle */}
+          <button
+            className="md:hidden text-muted-foreground hover:text-white p-2 transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X /> : <Menu />}
+          </button>
         </div>
-
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-foreground p-2"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X /> : <Menu />}
-        </button>
       </div>
 
       {/* Mobile Nav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-b border-border overflow-hidden"
+            initial={{ opacity: 0, height: 0, scale: 0.95 }}
+            animate={{ opacity: 1, height: "auto", scale: 1 }}
+            exit={{ opacity: 0, height: 0, scale: 0.95 }}
+            className="md:hidden glass border-b border-white/10 overflow-hidden mx-4 mt-2 rounded-2xl shadow-2xl"
           >
-            <div className="container px-4 py-6 flex flex-col gap-4">
+            <div className="container px-6 py-8 flex flex-col gap-6">
               {navLinks.map((link) => (
                 <ScrollLink
                   key={link.name}
@@ -90,21 +108,33 @@ export function Navigation() {
                   duration={500}
                   offset={-100}
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium text-foreground hover:text-primary transition-colors cursor-pointer"
+                  className="text-2xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer"
                 >
                   {link.name}
                 </ScrollLink>
               ))}
-              <div className="flex gap-4 mt-4 pt-4 border-t border-border">
-                <a href="#" className="text-muted-foreground hover:text-primary">
-                  <Github className="w-5 h-5" />
+              <div className="flex gap-6 mt-4 pt-6 border-t border-white/10">
+                <a href="https://github.com/sudoaptinstalltarun" target="_blank" className="text-muted-foreground hover:text-primary transition-transform hover:scale-125">
+                  <Github className="w-6 h-6" />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-primary">
-                  <Linkedin className="w-5 h-5" />
+                <a href="https://www.linkedin.com/in/tarun-kumar-885542282/" target="_blank" className="text-muted-foreground hover:text-primary transition-transform hover:scale-125">
+                  <Linkedin className="w-6 h-6" />
                 </a>
-                <a href="mailto:tarunkotian10@gmail.com" className="text-muted-foreground hover:text-primary">
-                  <Mail className="w-5 h-5" />
+                <a href="mailto:tarunkotian10@gmail.com" className="text-muted-foreground hover:text-primary transition-transform hover:scale-125">
+                  <Mail className="w-6 h-6" />
                 </a>
+              </div>
+              <div className="flex gap-4">
+                <Button variant="outline" className="flex-1 h-14 rounded-xl text-lg font-bold border-white/10 glass" asChild>
+                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                    Resume
+                  </a>
+                </Button>
+                <Button className="flex-1 h-14 rounded-xl text-lg font-bold bg-primary glow-primary" asChild>
+                  <ScrollLink to="contact" smooth={true} offset={-100} onClick={() => setIsOpen(false)}>
+                    Let's Talk
+                  </ScrollLink>
+                </Button>
               </div>
             </div>
           </motion.div>

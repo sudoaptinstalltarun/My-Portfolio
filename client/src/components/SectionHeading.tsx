@@ -8,23 +8,23 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ title, subtitle, alignment = "center" }: SectionHeadingProps) {
   return (
-    <div className={`mb-12 ${alignment === "center" ? "text-center" : "text-left"}`}>
+    <div className={`mb-16 ${alignment === "center" ? "text-center" : "text-left"}`}>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
       >
         {subtitle && (
-          <span className="text-primary font-semibold tracking-wider text-sm uppercase mb-2 block">
+          <span className="text-primary font-bold tracking-[0.2em] text-[10px] uppercase mb-4 block opacity-70">
             {subtitle}
           </span>
         )}
-        <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">
+        <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight leading-none mb-6">
           {title}
         </h2>
         <div 
-          className={`h-1.5 w-20 bg-accent rounded-full mt-4 ${
+          className={`h-1 w-16 bg-primary/30 rounded-full ${
             alignment === "center" ? "mx-auto" : ""
           }`}
         />

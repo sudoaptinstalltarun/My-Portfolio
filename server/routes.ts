@@ -35,11 +35,40 @@ export async function registerRoutes(
     try {
       const input = api.contact.create.input.parse(req.body);
       await storage.createContactMessage(input);
+
+      // Email Notification
+      if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+        const nodemailer = await import("nodemailer");
+        const transporter = nodemailer.createTransport({
+          service: "gmail",
+          auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
+          },
+        });
+
+        const mailOptions = {
+          from: process.env.EMAIL_USER,
+          to: "tarunkotian10@gmail.com",
+          subject: `New Portfolio Message from ${input.name}`,
+          text: `Name: ${input.name}\nEmail: ${input.email}\nMessage: ${input.message}`,
+        };
+
+        transporter.sendMail(mailOptions, (error: Error | null, info: any) => {
+          if (error) {
+            console.error("Email error:", error);
+          } else {
+            console.log("Email sent:", info.response);
+          }
+        });
+      }
+
       res.status(201).json({ success: true });
     } catch (err) {
       if (err instanceof z.ZodError) {
         res.status(400).json({ message: "Invalid form data" });
       } else {
+        console.error("Server error:", err);
         res.status(500).json({ message: "Internal server error" });
       }
     }
