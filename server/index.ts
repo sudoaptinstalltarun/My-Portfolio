@@ -2,7 +2,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import "dotenv/config";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
-import { createServer } from "http";
+import { createServer, type Server } from "http";
 
 export const app = express();
 const httpServer = createServer(app);
@@ -60,8 +60,13 @@ app.use((req, res, next) => {
   next();
 });
 
+let serverInitializationPromise: Promise<{ httpServer: Server, app: express.Express }> | null = null;
+
 export const initServer = async () => {
-  await registerRoutes(httpServer, app);
+  if (serverInitializationPromise) return serverInitializationPromise;
+
+  serverInitializationPromise = (async () => {
+    await registerRoutes(httpServer, app);
 
   app.use((err: any, _req: Request, res: Response, next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
@@ -86,7 +91,10 @@ export const initServer = async () => {
     }
   }
 
-  return { httpServer, app };
+    return { httpServer, app };
+  })();
+
+  return serverInitializationPromise;
 };
 
 // Only start the server if this file is run directly (not as a module on Vercel)
