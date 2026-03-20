@@ -32,9 +32,9 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div 
-          className={`flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-500 ${
+          className={`flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-300 ${
             scrolled 
-              ? "glass border-white/10 shadow-2xl" 
+              ? "bg-background/80 backdrop-blur-md border border-border shadow-sm" 
               : "bg-transparent border-transparent"
           }`}
         >
@@ -44,11 +44,11 @@ export function Navigation() {
             duration={500}
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform shadow-lg shadow-primary/20">
-              <Terminal className="w-6 h-6 text-white" />
+            <div className="w-8 h-8 flex items-center justify-center bg-foreground rounded-lg transition-transform">
+              <Terminal className="w-4 h-4 text-background" />
             </div>
-            <span className="font-display font-black text-2xl tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60 group-hover:from-primary group-hover:to-accent transition-all">
-              TARUN.
+            <span className="font-display font-bold text-xl tracking-tight text-foreground transition-all">
+              Tarun.
             </span>
           </ScrollLink>
 
@@ -68,12 +68,12 @@ export function Navigation() {
                 {link.name}
               </ScrollLink>
             ))}
-            <Button size="sm" variant="outline" className="rounded-xl px-6 border-white/10 glass hover:bg-white/10 transition-all duration-300 mr-2" asChild>
+            <Button size="sm" variant="outline" className="rounded-xl px-6 border-border hover:bg-muted transition-all duration-300 mr-2" asChild>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 Resume
               </a>
             </Button>
-            <Button size="sm" className="rounded-xl px-6 bg-primary hover:bg-primary/90 glow-primary transition-all duration-300" asChild>
+            <Button size="sm" className="rounded-xl px-6 transition-all duration-300" asChild>
               <ScrollLink to="contact" smooth={true} offset={-100}>
                 Hire Me
               </ScrollLink>
@@ -97,7 +97,7 @@ export function Navigation() {
             initial={{ opacity: 0, height: 0, scale: 0.95 }}
             animate={{ opacity: 1, height: "auto", scale: 1 }}
             exit={{ opacity: 0, height: 0, scale: 0.95 }}
-            className="md:hidden glass border-b border-white/10 overflow-hidden mx-4 mt-2 rounded-2xl shadow-2xl"
+            className="md:hidden bg-background border border-border overflow-hidden mx-4 mt-2 rounded-2xl shadow-lg"
           >
             <div className="container px-6 py-8 flex flex-col gap-6">
               {navLinks.map((link) => (

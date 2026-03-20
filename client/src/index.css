@@ -5,64 +5,65 @@
 @tailwind utilities;
 
 :root {
-  /* Modern Minimalist Dark Theme */
-  --background: 240 10% 4%;
+  /* Ultra Minimalist Dark Theme */
+  --background: 0 0% 3%;
   --foreground: 0 0% 98%;
   
-  --primary: 217 91% 60%;
-  --primary-foreground: 0 0% 100%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 3%;
   
-  --secondary: 240 4% 16%;
+  --secondary: 0 0% 10%;
   --secondary-foreground: 0 0% 98%;
   
-  --muted: 240 4% 10%;
-  --muted-foreground: 240 5% 65%;
+  --muted: 0 0% 10%;
+  --muted-foreground: 0 0% 65%;
   
-  --accent: 25 95% 53%;
+  --accent: 0 0% 15%;
   --accent-foreground: 0 0% 98%;
   
-  --border: 240 5% 15%;
-  --input: 240 5% 15%;
-  --ring: 240 5% 65%;
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 0 0% 65%;
   
-  --radius: 0.75rem;
+  --radius: 0.5rem;
   --font-sans: 'Inter', sans-serif;
   --font-display: 'Outfit', sans-serif;
 }
 
 @layer base {
   * {
-    @apply border-border selection:bg-white/10 selection:text-white;
+    @apply border-border selection:bg-white/20 selection:text-white;
   }
   body {
-    @apply bg-[#09090b] text-[#fafafa] antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    @apply font-bold tracking-tight;
+    @apply font-semibold tracking-tight;
   }
 }
 
-/* Minimalist Utilities */
+/* Minimalist Flat Utilities */
 .glass {
-  @apply bg-white/[0.02] backdrop-blur-md border border-white/10 shadow-none;
+  @apply bg-secondary border border-border shadow-none rounded-2xl transition-colors;
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-br from-white to-white/40;
+  @apply text-foreground;
 }
 
 .glow-primary {
   @apply shadow-none;
 }
+
 /* Professional Cleanup: Hiding Replit Branding */
 #replit-badge, 
 .replit-badge, 
 .replit-badge-root, 
 iframe[src*="replit.com/public/badge"] {
-display: none !important;
-visibility: hidden !important;
-opacity: 0 !important;
-pointer-events: none !important;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }

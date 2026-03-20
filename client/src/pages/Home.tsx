@@ -50,16 +50,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 };
 
-// Animated Background Component
-const FloatingBackground = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-    <div className="absolute inset-0 bg-background" />
-    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
-  </div>
-);
-
-
-
+// Minimalist setup
 export default function Home() {
   const { data: projects = [] } = useProjects();
   const { data: skills = [] } = useSkills();
@@ -86,9 +77,9 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen bg-mesh text-foreground font-sans selection:bg-primary/30">
+    <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/30">
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary z-[60] origin-left"
+        className="fixed top-0 left-0 right-0 h-1 bg-foreground/20 z-[60] origin-left"
         style={{ scaleX }}
       />
       <Navigation />
@@ -96,10 +87,8 @@ export default function Home() {
       {/* Hero Section */}
       <section 
         id="hero" 
-        className="relative min-h-screen flex items-center pt-20 overflow-hidden"
+        className="relative min-h-screen flex items-center pt-20"
       >
-        <FloatingBackground />
-        
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div 
             variants={containerVariants}
@@ -109,23 +98,17 @@ export default function Home() {
           >
             <motion.div 
               variants={itemVariants} 
-              className="inline-block mb-6 px-4 py-1.5 rounded-full glass border border-white/20 text-primary font-semibold text-sm tracking-wide"
+              className="inline-block mb-6 px-4 py-1.5 rounded-full border border-border text-foreground font-medium text-sm tracking-wide"
             >
-              <span className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                Robotics & Automation Engineer
-              </span>
+              Robotics & Automation Engineer
             </motion.div>
             
             <motion.h1 
               variants={itemVariants} 
-              className="text-6xl md:text-8xl font-display font-bold mb-8 tracking-tight leading-[1.1] text-white"
+              className="text-5xl md:text-7xl font-display font-semibold mb-8 tracking-tight leading-[1.1] text-foreground"
             >
               Building the future of <br/>
-              <span className="text-white/40 drop-shadow-none">
+              <span className="text-muted-foreground">
                 Autonomous Systems
               </span>
             </motion.h1>
@@ -141,7 +124,7 @@ export default function Home() {
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <Button 
                   size="lg" 
-                  className="h-14 px-10 text-lg rounded-2xl bg-primary hover:bg-primary/90 transition-all duration-300 shadow-lg" 
+                  className="h-14 px-10 text-lg rounded-xl bg-foreground text-background hover:bg-foreground/90 transition-all duration-300" 
                   asChild
                 >
                   <ScrollLink to="projects" smooth={true} duration={500} offset={-100} className="cursor-pointer">
@@ -151,7 +134,7 @@ export default function Home() {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="h-14 px-10 text-lg rounded-2xl border-white/10 glass hover:bg-white/10 transition-all duration-300" 
+                  className="h-14 px-10 text-lg rounded-xl border border-border bg-transparent hover:bg-white/5 transition-all duration-300" 
                   asChild
                 >
                   <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
@@ -197,14 +180,13 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="aspect-square rounded-3xl overflow-hidden glass border-white/20 relative z-10 shadow-2xl">
+              <div className="aspect-square rounded-2xl overflow-hidden border border-border relative z-10 grayscale hover:grayscale-0 transition-all duration-700">
                 <img 
                   src={profileImg} 
                   alt="Tarun Kumar" 
-                  className="w-full h-full object-cover scale-110 hover:scale-125 transition-transform duration-700"
+                  className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-8 -right-8 w-full h-full border-4 border-primary/20 rounded-3xl -z-10 animate-float" />
             </motion.div>
 
             <div className="space-y-8">
@@ -260,20 +242,20 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="glass border-green-500/20 bg-green-500/5 p-8 rounded-[2rem] flex flex-col md:flex-row items-center justify-between gap-8 border-l-8 border-l-green-500 shadow-2xl shadow-green-500/5"
+            className="border border-border p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-8"
           >
             <div className="flex items-center gap-6">
-              <div className="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center border border-green-500/20">
-                <Github className="w-8 h-8 text-green-500" />
+              <div className="w-16 h-16 bg-muted rounded-xl flex items-center justify-center">
+                <Github className="w-8 h-8 text-foreground" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-2xl font-display font-black text-white italic">Open Source Contributor</h3>
-                <p className="text-muted-foreground/80 font-light italic">
+                <h3 className="text-xl font-display font-semibold text-foreground">Open Source Contributor</h3>
+                <p className="text-muted-foreground font-medium">
                   Improved Costmap2D parameter documentation in <span className="text-green-400 font-bold">ros-navigation/docs.nav2.org</span> · March 2025
                 </p>
               </div>
             </div>
-            <Button className="rounded-xl bg-green-500 hover:bg-green-600 text-white font-bold px-8 h-12 shadow-lg shadow-green-500/20 transition-all hover:scale-105" asChild>
+            <Button variant="outline" className="rounded-xl px-8 h-12" asChild>
               <a href="https://github.com/ros-navigation/docs.nav2.org" target="_blank" rel="noopener noreferrer">
                 View Contribution
               </a>
@@ -283,7 +265,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-32 bg-white/3">
+      <section id="skills" className="py-32">
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeading title="Technical Expertise" subtitle="My Toolkit" />
           
@@ -295,13 +277,12 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="glass p-8 rounded-3xl border-white/10 hover:border-primary/40 transition-all duration-500 shadow-xl"
+                className="p-8 rounded-2xl border border-border"
               >
-                <h3 className="text-2xl font-display font-black mb-6 text-primary tracking-tight italic">{skillGroup.category}</h3>
+                <h3 className="text-xl font-display font-semibold mb-6 text-foreground tracking-tight">{skillGroup.category}</h3>
                 <div className="flex flex-wrap gap-3">
                   {skillGroup.items.map((skill: string) => (
-                    <Badge key={skill} variant="outline" className="text-xs py-2 px-4 glass border-white/5 hover:bg-primary hover:text-white transition-colors uppercase font-bold tracking-widest text-muted-foreground/80">
+                    <Badge key={skill} variant="outline" className="text-xs py-2 px-4 border-border hover:bg-muted transition-colors uppercase font-medium tracking-wider text-muted-foreground">
                       {skill}
                     </Badge>
                   ))}
@@ -328,8 +309,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group relative bg-white/[0.02] border border-white/5 p-8 rounded-3xl hover:bg-white/[0.04] transition-all duration-300 text-center flex flex-col items-center gap-6"
+                className="p-8 rounded-2xl border border-border flex flex-col items-center text-center gap-6"
               >
                 <div className="w-16 h-16 bg-primary/5 rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
                   <cert.icon className="w-8 h-8" />
@@ -381,17 +361,16 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                whileHover={{ scale: 1.02 }}
-                className="flex flex-col md:flex-row items-center md:items-start gap-8 glass p-8 rounded-3xl border-white/10 shadow-2xl hover:border-primary/50 transition-all"
+                className="flex flex-col md:flex-row items-center md:items-start gap-8 p-8 rounded-2xl border border-border"
               >
-                <div className="p-5 bg-primary/10 rounded-2xl text-primary shadow-inner">
-                  <GraduationCap className="w-10 h-10" />
+                <div className="p-5 bg-muted rounded-xl">
+                  <GraduationCap className="w-10 h-10 text-foreground" />
                 </div>
                 <div className="text-center md:text-left flex-grow">
-                  <h3 className="text-2xl font-display font-black text-white mb-2">{edu.institution}</h3>
-                  <p className="text-xl font-medium text-primary/80 uppercase tracking-wider text-sm font-bold">{edu.degree}</p>
+                  <h3 className="text-xl font-display font-semibold text-foreground mb-2">{edu.institution}</h3>
+                  <p className="text-muted-foreground uppercase tracking-wider text-sm font-medium">{edu.degree}</p>
                 </div>
-                <Badge variant="secondary" className="text-sm font-black px-6 py-2 glass border-white/20 text-white rounded-full">
+                <Badge variant="secondary" className="text-sm font-bold px-6 py-2 bg-muted text-foreground border-none rounded-full">
                   {edu.year}
                 </Badge>
               </motion.div>
@@ -401,15 +380,11 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 relative overflow-hidden">
-        {/* Decorative Background for Contact */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 blur-[120px] -z-10" />
-        <div className="absolute bottom-0 left-0 w-1/2 h-full bg-accent/5 blur-[120px] -z-10" />
-
+      <section id="contact" className="py-32">
         <div className="container mx-auto px-4 md:px-6">
           <SectionHeading title="Get In Touch" subtitle="Contact Me" />
           
-          <div className="max-w-5xl mx-auto glass p-12 md:p-16 rounded-[3rem] border-white/10 shadow-3xl text-center">
+          <div className="max-w-5xl mx-auto border border-border p-12 md:p-16 rounded-3xl text-center">
             <div className="space-y-12">
               <p className="text-2xl text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
                 Whether you have a question about my projects, want to collaborate on a robotics initiative, or just want to say hi, I'd love to hear from you.
@@ -426,14 +401,14 @@ export default function Home() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex flex-col items-center gap-6 group"
+                    className="flex flex-col items-center gap-6"
                   >
-                    <div className={`p-6 bg-white/5 rounded-3xl ${item.color} group-hover:scale-110 transition-transform duration-300 shadow-xl border border-white/5 group-hover:border-white/20`}>
-                      <item.icon className="w-10 h-10" />
+                    <div className="p-6 bg-muted rounded-2xl">
+                      <item.icon className="w-8 h-8 text-foreground" />
                     </div>
                     <div>
-                      <h4 className="font-black text-xs uppercase tracking-[0.2em] mb-2 opacity-50">{item.label}</h4>
-                      <a href={item.href} className="text-lg font-bold text-white hover:text-primary transition-colors whitespace-nowrap">
+                      <h4 className="font-medium text-xs uppercase tracking-wider mb-2 text-muted-foreground">{item.label}</h4>
+                      <a href={item.href} className="text-lg font-semibold text-foreground hover:text-muted-foreground transition-colors whitespace-nowrap">
                         {item.info}
                       </a>
                     </div>

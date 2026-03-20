@@ -25,17 +25,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       transition={{ duration: 0.4, delay: index * 0.1 }}
       className="h-full"
     >
-      <Card className="h-full flex flex-col bg-white/[0.02] border-white/10 hover:border-white/20 transition-all duration-300 group overflow-hidden shadow-none rounded-[2rem]">
-        <div className="h-52 bg-white/[0.03] relative overflow-hidden flex items-center justify-center">
-          <CircuitBoard className="w-16 h-16 text-white/10 group-hover:text-primary transition-colors duration-500" />
-          <Badge className="absolute top-4 right-4 bg-white/10 border-white/10 text-white font-medium px-3 py-1 text-[10px] uppercase tracking-wider">
+      <Card className="h-full flex flex-col bg-card border-border hover:border-muted-foreground/30 transition-all duration-300 group overflow-hidden shadow-none rounded-2xl">
+        <div className="h-44 bg-muted relative overflow-hidden flex items-center justify-center">
+          <CircuitBoard className="w-16 h-16 text-muted-foreground/30 group-hover:text-foreground transition-colors duration-500" />
+          <Badge className="absolute top-4 right-4 bg-background/50 border-none text-foreground font-medium px-3 py-1 text-[10px] uppercase tracking-wider">
             {project.category}
           </Badge>
         </div>
         
         <CardHeader className="px-6 pt-6 pb-2">
           <div className="flex justify-between items-start gap-4">
-            <CardTitle className="text-xl font-display font-bold group-hover:text-primary transition-colors leading-tight">
+            <CardTitle className="text-xl font-display font-semibold text-foreground group-hover:text-muted-foreground transition-colors leading-tight">
               {project.title}
             </CardTitle>
             {project.link && (
@@ -50,7 +50,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         
         <CardContent className="flex-grow px-6 pb-6 mt-auto">
           <div className="space-y-4">
-            <p className="text-muted-foreground leading-relaxed text-sm font-light">
+            <p className="text-muted-foreground leading-relaxed text-sm">
               {displayDescription}
             </p>
             {isLongDescription && (
@@ -58,7 +58,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 variant="ghost" 
                 size="sm" 
                 onClick={() => setIsOpen(!isExpanded)}
-                className="mt-1 h-8 px-0 text-primary hover:bg-transparent font-medium flex items-center gap-1 group/btn"
+                className="mt-1 h-8 px-0 text-foreground hover:bg-transparent font-medium flex items-center gap-1"
               >
                 {isExpanded ? (
                   <>Show Less <ChevronUp className="w-4 h-4" /></>
@@ -68,12 +68,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </Button>
             )}
             
-            <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+            <div className="flex flex-wrap gap-2 pt-4 border-t border-border">
               {project.technologies?.map((tech) => (
                 <Badge 
                   key={tech} 
                   variant="outline" 
-                  className="bg-white/5 border-white/10 text-[10px] font-medium uppercase tracking-wider px-2 py-0.5 rounded-md"
+                  className="bg-muted border-none text-muted-foreground text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-md"
                 >
                   {tech}
                 </Badge>

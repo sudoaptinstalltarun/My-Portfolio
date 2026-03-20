@@ -16,15 +16,15 @@ export function SectionHeading({ title, subtitle, alignment = "center" }: Sectio
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         {subtitle && (
-          <span className="text-primary font-bold tracking-[0.2em] text-[10px] uppercase mb-4 block opacity-70">
+          <span className="text-muted-foreground font-semibold tracking-widest text-xs uppercase mb-3 block">
             {subtitle}
           </span>
         )}
-        <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight leading-none mb-6">
+        <h2 className="text-4xl md:text-5xl font-display font-semibold text-foreground tracking-tight leading-none mb-6">
           {title}
         </h2>
         <div 
-          className={`h-1 w-16 bg-primary/30 rounded-full ${
+          className={`h-1 w-16 bg-muted rounded-full ${
             alignment === "center" ? "mx-auto" : ""
           }`}
         />

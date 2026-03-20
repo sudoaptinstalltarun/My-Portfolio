@@ -108,11 +108,6 @@ export const skills = [
     id: 7,
     category: "CAD",
     items: ["SOLIDWORKS", "Autodesk Fusion 360", "Onshape"]
-  },
-  {
-    id: 8,
-    category: "Certifications",
-    items: ["SOLIDWORKS CSWA", "MATLAB Onramp", "Simulink Onramp", "Python Foundation"]
   }
 ];
 
