@@ -31,7 +31,6 @@ import { MermaidDiagram } from "@/components/ui/MermaidDiagram";
 import { engineeringProjects } from "@/data/projects";
 import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { 
-  useProjects, 
   useSkills, 
   useExperience, 
   useEducation, 
@@ -55,7 +54,6 @@ const itemVariants = {
 
 // Minimalist setup
 export default function Home() {
-  const { data: projects = [] } = useProjects();
   const { data: skills = [] } = useSkills();
   const { data: experience = [] } = useExperience();
   const { data: education = [] } = useEducation();
