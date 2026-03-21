@@ -5,29 +5,30 @@
 @tailwind utilities;
 
 :root {
-  /* Ultra Minimalist Dark Theme */
-  --background: 0 0% 3%;
-  --foreground: 0 0% 98%;
+  /* Engineering Portfolio Theme - Deep Dark Mode */
+  --background: 0 0% 2%; /* #050505 approx */
+  --foreground: 210 40% 98%; /* text-slate-100 */
   
-  --primary: 0 0% 98%;
-  --primary-foreground: 0 0% 3%;
+  --primary: 217 91% 60%; /* Electric Blue #3b82f6 */
+  --primary-foreground: 0 0% 98%;
   
-  --secondary: 0 0% 10%;
-  --secondary-foreground: 0 0% 98%;
+  --secondary: 220 16% 7%; /* #0f1115 */
+  --secondary-foreground: 210 40% 98%;
   
-  --muted: 0 0% 10%;
-  --muted-foreground: 0 0% 65%;
+  --muted: 220 16% 7%;
+  --muted-foreground: 215 16% 65%; /* text-slate-400 */
   
-  --accent: 0 0% 15%;
+  --accent: 38 92% 50%; /* ROS-Orange #f59e0b */
   --accent-foreground: 0 0% 98%;
   
-  --border: 0 0% 15%;
-  --input: 0 0% 15%;
-  --ring: 0 0% 65%;
+  --border: 215 25% 15%; /* border-slate-800 / border-slate-700 */
+  --input: 215 25% 15%;
+  --ring: 217 91% 60%;
   
-  --radius: 0.5rem;
+  --radius: 0.375rem; /* Sharper edges / rounded-md */
   --font-sans: 'Inter', sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  --font-display: 'Inter', sans-serif;
 }
 
 @layer base {
@@ -46,7 +47,7 @@
 
 /* Minimalist Flat Utilities */
 .glass {
-  @apply bg-secondary border border-border shadow-none rounded-2xl transition-colors;
+  @apply bg-secondary border border-border shadow-none rounded-md transition-colors;
 }
 
 .text-gradient {

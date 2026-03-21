@@ -17,11 +17,9 @@ export function Navigation() {
   }, []);
 
   const navLinks = [
-    { name: "About", to: "about" },
-    { name: "Skills", to: "skills" },
-    { name: "Experience", to: "experience" },
+    { name: "Open Source", to: "open-source" },
     { name: "Projects", to: "projects" },
-    { name: "Contact", to: "contact" },
+    { name: "Skills", to: "skills" },
   ];
 
   return (
@@ -32,9 +30,9 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div 
-          className={`flex items-center justify-between px-6 py-3 rounded-2xl transition-all duration-300 ${
+          className={`flex items-center justify-between px-6 py-3 rounded-md transition-all duration-300 ${
             scrolled 
-              ? "bg-background/80 backdrop-blur-md border border-border shadow-sm" 
+              ? "bg-black/60 backdrop-blur-md border border-border shadow-none" 
               : "bg-transparent border-transparent"
           }`}
         >
@@ -44,11 +42,11 @@ export function Navigation() {
             duration={500}
             className="flex items-center gap-2 cursor-pointer group"
           >
-            <div className="w-8 h-8 flex items-center justify-center bg-foreground rounded-lg transition-transform">
-              <Terminal className="w-4 h-4 text-background" />
+            <div className="w-8 h-8 flex items-center justify-center bg-primary rounded-sm transition-colors group-hover:bg-accent">
+              <Terminal className="w-4 h-4 text-primary-foreground group-hover:text-accent-foreground" />
             </div>
-            <span className="font-display font-bold text-xl tracking-tight text-foreground transition-all">
-              Tarun.
+            <span className="font-mono font-bold text-lg tracking-widest text-foreground transition-all uppercase">
+              Tarun_K
             </span>
           </ScrollLink>
 
@@ -63,19 +61,19 @@ export function Navigation() {
                 duration={500}
                 offset={-100}
                 activeClass="text-primary font-bold after:scale-x-100"
-                className="relative text-sm font-medium text-muted-foreground hover:text-white cursor-pointer transition-colors py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:transition-transform after:origin-right hover:after:origin-left hover:after:scale-x-100"
+                className="relative text-sm font-mono font-bold uppercase tracking-widest text-muted-foreground hover:text-white cursor-pointer transition-colors py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:transition-transform after:origin-right hover:after:origin-left hover:after:scale-x-100"
               >
                 {link.name}
               </ScrollLink>
             ))}
-            <Button size="sm" variant="outline" className="rounded-xl px-6 border-border hover:bg-muted transition-all duration-300 mr-2" asChild>
+            <Button size="sm" variant="outline" className="rounded-sm px-6 font-mono font-bold tracking-widest uppercase border-border text-white bg-transparent hover:border-accent hover:text-accent transition-all duration-300 mr-2 shadow-none" asChild>
               <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                 Resume
               </a>
             </Button>
-            <Button size="sm" className="rounded-xl px-6 transition-all duration-300" asChild>
+            <Button size="sm" className="rounded-sm px-6 font-mono font-bold tracking-widest uppercase bg-primary text-primary-foreground shadow-none transition-all duration-300" asChild>
               <ScrollLink to="contact" smooth={true} offset={-100}>
-                Hire Me
+                Contact
               </ScrollLink>
             </Button>
           </div>
@@ -97,7 +95,7 @@ export function Navigation() {
             initial={{ opacity: 0, height: 0, scale: 0.95 }}
             animate={{ opacity: 1, height: "auto", scale: 1 }}
             exit={{ opacity: 0, height: 0, scale: 0.95 }}
-            className="md:hidden bg-background border border-border overflow-hidden mx-4 mt-2 rounded-2xl shadow-lg"
+            className="md:hidden bg-black/90 backdrop-blur-md border border-border overflow-hidden mx-4 mt-2 rounded-md shadow-none"
           >
             <div className="container px-6 py-8 flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -108,12 +106,12 @@ export function Navigation() {
                   duration={500}
                   offset={-100}
                   onClick={() => setIsOpen(false)}
-                  className="text-2xl font-bold text-foreground hover:text-primary transition-colors cursor-pointer"
+                  className="text-lg font-mono font-bold uppercase tracking-widest text-foreground hover:text-primary transition-colors cursor-pointer"
                 >
                   {link.name}
                 </ScrollLink>
               ))}
-              <div className="flex gap-6 mt-4 pt-6 border-t border-white/10">
+              <div className="flex gap-6 mt-4 pt-6 border-t border-border">
                 <a href="https://github.com/sudoaptinstalltarun" target="_blank" className="text-muted-foreground hover:text-primary transition-transform hover:scale-125">
                   <Github className="w-6 h-6" />
                 </a>
@@ -125,14 +123,14 @@ export function Navigation() {
                 </a>
               </div>
               <div className="flex gap-4">
-                <Button variant="outline" className="flex-1 h-14 rounded-xl text-lg font-bold border-white/10 glass" asChild>
+                <Button variant="outline" className="flex-1 h-14 rounded-sm text-sm font-mono font-bold tracking-widest uppercase border border-border text-white bg-transparent shadow-none" asChild>
                   <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                     Resume
                   </a>
                 </Button>
-                <Button className="flex-1 h-14 rounded-xl text-lg font-bold bg-primary glow-primary" asChild>
+                <Button className="flex-1 h-14 rounded-sm text-sm font-mono font-bold tracking-widest uppercase bg-primary text-primary-foreground shadow-none" asChild>
                   <ScrollLink to="contact" smooth={true} offset={-100} onClick={() => setIsOpen(false)}>
-                    Let's Talk
+                    Contact
                   </ScrollLink>
                 </Button>
               </div>
