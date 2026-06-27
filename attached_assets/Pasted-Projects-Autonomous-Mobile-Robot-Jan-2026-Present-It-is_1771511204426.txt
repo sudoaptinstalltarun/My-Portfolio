@@ -1,0 +1,116 @@
+Projects
+
+
+Autonomous Mobile Robot
+
+Jan 2026 – Present
+
+It is a custom-built differential drive robot designed for autonomous navigation and mapping in indoor environments. Powered by ROS 2 Jazzy Jalisco on a Raspberry Pi 5/4, it utilizes a robust hardware-software architecture to perform Simultaneous Localization and Mapping (SLAM) and autonomous path planning.
+
+Skills: ROS2, Python (Programming Language), +3 skills
+
+
+Agridrone Audit
+
+Sep 2024 – Present
+
+
+Associated with Team Challengers
+
+Drone-based Intelligent ET sensing system and irrigation water use accounting system for irrigation commands.
+
+Skills: yolo, OpenCV, +2 skills
+
+Other contributors
+
+
+
+View all contributors
+
+SmartRoomOccupancy using Aiml model
+
+Nov 2025 – Nov 2025
+
+
+Associated with Sahyadri College of Engineering & Management
+
+Skills: Artificial Intelligence (AI), Data Modeling
+
+Thumbnail for GitHub
+GitHub
+
+Other contributors
+
+
+
+
+View all contributors
+
+Smart Surveillance Robot
+
+Apr 2025 – Apr 2025
+
+
+Associated with Sahyadri College of Engineering & Management
+
+Project using Raspberry Pi to build a smart surveillance robot. It features a live camera feed and remote movement control, making it perfect for home security, remote monitoring, or learning robotics.
+
+Skills: Raspberry Pi, Arduino IDE
+
+Other contributors
+
+
+
+View all contributors
+
+ArticulateX
+
+Dec 2024 – Jan 2025
+
+
+Associated with Sahyadri College of Engineering & Management
+
+It is a highly versatile robotic arm that combines
+advanced revolute and articulated joints for precision
+and flexibility.
+
+Thumbnail for Robotic arm
+Robotic arm
+
+Other contributors
+
+
+
++3
+View all contributors
+
+Autonomous Drone
+
+Jul 2024 – Jul 2024
+
+
+Associated with Team Challengers
+
+Highly stable and efficient drone equipped with GPS technology and precise location holding and autonomous emergency landing capabilities
+
+Thumbnail for Autonomous Drone
+Autonomous Drone
+
+Other contributors
+
+
+
++3
+View all contributors
+
+Design of Protable Catapult launcher for uav
+
+
+Associated with National Institute of Technology Karnataka
+
+Skills: Soildworks, Ansys Workbench, +4 skills
+
+Thumbnail for Isometric view
+Isometric view
+
+Other contributors
