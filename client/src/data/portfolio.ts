@@ -120,13 +120,6 @@ export const experience = [
     description: "Designed and analysed a portable catapult launch system for UAVs using SolidWorks and ANSYS Workbench. Worked on autonomous robotics system integration, sensor deployment, and mechanical stress analysis for field-deployable systems."
   },
   {
-    id: 4,
-    role: "Open Source Contributor",
-    company: "ROS2 Navigation2 (Nav2)",
-    duration: "Jan 2025 – Present",
-    description: "Contributed to the core ROS2 Navigation (Nav2) documentation stack. Tuned and documented Costmap2D parameter configurations and obstacle avoidance layers, enabling cleaner SLAM deployment guidelines for the global robotics community."
-  },
-  {
     id: 2,
     role: "Design Assistant Intern",
     company: "Atharva Enterprise",
@@ -166,25 +159,25 @@ export const education = [
 export const certifications = [
   {
     id: 1,
-    title: "SOLIDWORKS CAD Design Associate (CSWA)",
-    issuer: "Dassault Systèmes",
-    date: "Sep 2024",
-    credentialId: "C-CPAUH4YVTK",
-    skills: ["Solidworks"]
+    title: "Artificial Intelligence & Machine Learning in the Space Exploration",
+    issuer: "India Space Academy",
+    date: "Feb 2026",
+    credentialId: "ISA-1002806",
+    skills: ["Artificial Intelligence", "Machine Learning", "Space Exploration"]
   },
   {
     id: 2,
-    title: "MATLAB Onramp",
-    issuer: "MathWorks",
-    date: "Nov 2024",
-    skills: ["MATLAB"]
+    title: "Start a Business: Design Thinking & Entrepreneurship [2024]",
+    issuer: "Infosys Springboard",
+    date: "Apr 2026",
+    skills: ["Design Thinking", "Entrepreneurship"]
   },
   {
     id: 3,
-    title: "Simulink Onramp",
-    issuer: "MathWorks",
-    date: "Nov 2024",
-    skills: ["Simulink"]
+    title: "Product Marketing Launch Plan: Product GTM with Dekker, MBA",
+    issuer: "Infosys Springboard",
+    date: "May 2026",
+    skills: ["Product Marketing", "Go-To-Market"]
   },
   {
     id: 4,
@@ -202,16 +195,24 @@ export const certifications = [
   },
   {
     id: 6,
-    title: "Start a Business: Design Thinking & Entrepreneurship",
-    issuer: "Infosys Springboard",
-    date: "Apr 2026",
-    skills: ["Design Thinking", "Entrepreneurship"]
+    title: "Matlab Onramp",
+    issuer: "MATLAB Coding",
+    date: "Nov 2024",
+    skills: ["MATLAB"]
   },
   {
     id: 7,
-    title: "Product Marketing Launch Plan: Product GTM",
-    issuer: "Infosys Springboard",
-    date: "May 2026",
-    skills: ["Product Marketing", "Go-To-Market"]
+    title: "Simulink Onramp",
+    issuer: "MATLAB Coding",
+    date: "Nov 2024",
+    skills: ["Simulink"]
+  },
+  {
+    id: 8,
+    title: "SOLIDWORKS CAD Design Associate (CSWA)",
+    issuer: "Dassault Systèmes",
+    date: "Sep 2024",
+    credentialId: "C-CPAUH4YVTK",
+    skills: ["Solidworks"]
   }
 ];
