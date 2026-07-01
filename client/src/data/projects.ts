@@ -140,7 +140,9 @@ export const engineeringProjects: EngineeringProject[] = [
     Engine -->|Trigger Corrective Script| Subsystems:::control
     Engine -->|Update Stream| UI`,
     buttons: [
-      { label: "GitHub Repo", link: "https://github.com/sudoaptinstalltarun/deep-space-anomaly-detection" }
+      { label: "GitHub Repo", link: "https://github.com/sudoaptinstalltarun/deep-space-anomaly-detection" },
+      { label: "Completion Letter", link: "/isa_project_completion_letter.pdf" },
+      { label: "Participation Certificate", link: "/isa_participation_certificate.pdf" }
     ]
   },
   {

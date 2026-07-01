@@ -163,6 +163,7 @@ export const certifications = [
     issuer: "India Space Academy",
     date: "Feb 2026",
     credentialId: "ISA-1002806",
+    link: "/isa_participation_certificate.pdf",
     skills: ["Artificial Intelligence", "Machine Learning", "Space Exploration"]
   },
   {

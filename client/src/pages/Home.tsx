@@ -306,23 +306,44 @@ export default function Home() {
             <div className="pt-12 space-y-4">
               <span className="font-mono text-[10px] tracking-wider text-muted-foreground uppercase block">// Certifications</span>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {certifications.map((cert: any) => (
-                  <div 
-                    key={cert.id} 
-                    className="border border-white/[0.05] rounded-lg p-5 bg-black/40 hover:border-white/[0.1] transition-colors flex flex-col justify-between"
-                  >
-                    <div className="space-y-2">
-                      <span className="text-xs font-medium text-white block leading-snug">{cert.title}</span>
-                      <span className="text-[9px] font-mono text-muted-foreground uppercase block tracking-tight">{cert.issuer}</span>
+                {certifications.map((cert: any) => {
+                  const content = (
+                    <>
+                      <div className="space-y-2">
+                        <span className="text-xs font-medium text-white block leading-snug group-hover:text-primary transition-colors flex justify-between items-start gap-2">
+                          {cert.title}
+                          {cert.link && <ExternalLink className="w-3 h-3 text-muted-foreground group-hover:text-primary shrink-0 mt-1 transition-colors" />}
+                        </span>
+                        <span className="text-[9px] font-mono text-muted-foreground uppercase block tracking-tight">{cert.issuer}</span>
+                      </div>
+                      <div className="pt-4 border-t border-white/[0.02] mt-4 flex items-center justify-between">
+                        {cert.credentialId && (
+                          <span className="text-[8px] font-mono text-muted-foreground/60">{cert.credentialId}</span>
+                        )}
+                        <span className="text-[9px] font-mono text-primary font-bold ml-auto">{cert.date}</span>
+                      </div>
+                    </>
+                  );
+
+                  return cert.link ? (
+                    <a
+                      key={cert.id}
+                      href={cert.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="border border-white/[0.05] rounded-lg p-5 bg-black/40 hover:border-primary/20 hover:bg-black/60 transition-all flex flex-col justify-between cursor-pointer group"
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div
+                      key={cert.id}
+                      className="border border-white/[0.05] rounded-lg p-5 bg-black/40 hover:border-white/[0.1] transition-colors flex flex-col justify-between"
+                    >
+                      {content}
                     </div>
-                    <div className="pt-4 border-t border-white/[0.02] mt-4 flex items-center justify-between">
-                      {cert.credentialId && (
-                        <span className="text-[8px] font-mono text-muted-foreground/60">{cert.credentialId}</span>
-                      )}
-                      <span className="text-[9px] font-mono text-primary font-bold ml-auto">{cert.date}</span>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
