@@ -95,7 +95,7 @@ export function CardHoverEffect({ children, className = "", ...props }: CardHove
       className={`group/card relative h-full ${className}`}
     >
       <div className="pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-r from-primary/0 via-primary/60 to-purple-500/0 opacity-0 blur-sm transition-opacity duration-500 group-hover/card:opacity-100" />
-      <div className="relative h-full rounded-[inherit] border border-white/[0.07] bg-[#080808]/90 transition-colors duration-500 group-hover/card:border-primary/60">
+      <div className="relative h-full rounded-[inherit] border border-white/[0.07] bg-[#080808]/90 transition-[border-color,box-shadow] duration-500 group-hover/card:border-primary/60 group-hover/card:shadow-[0_0_24px_rgba(0,212,255,0.3)]">
         {children}
       </div>
     </motion.div>

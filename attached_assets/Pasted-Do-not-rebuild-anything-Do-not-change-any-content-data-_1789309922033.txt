@@ -1,0 +1,115 @@
+Do not rebuild anything. Do not change any content, data files, 
+routes, or logic. Only make the visual and component changes listed 
+below. All file paths are confirmed from a codebase audit.
+
+=== WHAT ALREADY EXISTS (do not recreate) ===
+- AuroraBackground, TextGenerateEffect, MovingBorder, CardHoverEffect
+  are already in client/src/components/ui/aceternity.tsx
+- Framer Motion is already installed and used
+- Dark theme (#050505 bg, #00d4ff cyan, #8b5cf6 purple) already set
+- CustomCursor.tsx is already built but NOT mounted anywhere
+- Magnetic.tsx is already built but NOT mounted anywhere
+- Floating navbar already exists in Navigation.tsx
+- Timeline already exists in ExperienceTimeline.tsx
+
+=== CHANGES TO MAKE ===
+
+--- 1. ACTIVATE CUSTOM CURSOR ---
+In client/src/App.tsx or the top-level Home.tsx:
+- Import CustomCursor from components/CustomCursor.tsx
+- Mount it once at the root level so it's active across all sections
+- Verify it uses spring physics and grows on hover over buttons/links
+- Hide the default system cursor with: cursor: none on body in index.css
+
+--- 2. ACTIVATE MAGNETIC EFFECT ---
+In client/src/components/Magnetic.tsx — it's built but unused.
+- Wrap the two hero CTA buttons ("View Projects" and "Try Simulators")
+  with the Magnetic component
+- Wrap the footer social icon buttons with Magnetic as well
+- Do not apply Magnetic to navbar links (too distracting)
+
+--- 3. PROJECTS SECTION — BENTO GRID LAYOUT ---
+In the projects section of Home.tsx, replace the current card grid
+with a Bento Grid layout using CSS Grid:
+
+Grid rules:
+- First project card (ICE-PATH): spans 2 columns, full height (large)
+- Second project card (AeroTHON): spans 2 columns, full height (large)
+- Remaining project cards: 1 column each (smaller)
+- On mobile: all cards go full width, stacked
+
+Keep all existing project data from client/src/data/projects.ts.
+Keep the existing ProjectModal — clicking any card still opens it.
+Keep the "Active Node" badge and tech stack tags.
+
+Each card should use CardHoverEffect from aceternity.tsx with:
+- Hover lift: translateY(-6px)
+- Cyan glow on hover: box-shadow 0 0 24px rgba(0, 212, 255, 0.3)
+- Thin cyan border on hover
+
+--- 4. HERO SECTION — SCANLINE + GLITCH EFFECT ---
+In the hero section of Home.tsx:
+- Add a very subtle scanline overlay (CSS repeating-linear-gradient,
+  opacity 0.03, pointer-events none, position absolute, full cover)
+- Add a CSS glitch animation to the "Tarun Kumar" heading that
+  triggers once on page load (clip-path slice effect, duration 600ms,
+  runs once, then stops — not on loop)
+- Keep the existing AuroraBackground and dot-grid behind it
+
+--- 5. SECTION HEADINGS — CYAN BRACKET STYLE ---
+In client/src/components/SectionHeading.tsx:
+- Before each section title text, add a dim cyan prefix: [ 0x ]
+  where x is the section number (01, 02, 03 etc.) in Fira Code font
+- Keep the existing cyan underline
+- Style the prefix: color #00d4ff at 40% opacity, font-size 0.75rem
+
+Example result:
+[ 01 ]  Experience
+[ 02 ]  Projects
+[ 03 ]  Simulators
+
+--- 6. SKILL BADGES — GLOW ON HOVER ---
+The skill section already uses MovingBorder from aceternity.tsx.
+Additional change:
+- Add a cyan text-shadow glow on each skill badge text on hover:
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.8)
+- Transition duration: 200ms
+
+--- 7. CONTACT SECTION — TERMINAL BORDER ---
+In the contact section:
+- Wrap the entire contact form card in a border styled like a
+  terminal window:
+  - Top bar with three dots (red, yellow, green — small circles)
+  - Title in the top bar: "COMM_TX // SECURE_CHANNEL" in Fira Code
+  - Border: 1px solid rgba(0, 212, 255, 0.3)
+  - Background: rgba(0, 0, 0, 0.6) with backdrop-blur
+- Keep all existing form fields, Zod validation, and POST /api/contact
+  logic exactly as is
+
+--- 8. FOOTER ---
+Current footer has: tk. logo, GitHub, LinkedIn, Email, year, 
+"System Offline" label.
+Changes:
+- Change "System Offline" to "All Systems Nominal" with a
+  green (#00ff88) blinking dot next to it (CSS animation, 1s pulse)
+- Add a thin cyan top border (1px, 20% opacity) to the footer
+
+=== DO NOT TOUCH ===
+- client/src/data/projects.ts
+- client/src/data/portfolio.ts
+- client/src/data/caseStudies.ts
+- All simulator components (PidSimulator, PathVisualizer,
+  HardwareGallery, CaseStudiesSection)
+- InteractiveTerminal.tsx logic and commands
+- Navigation.tsx links and structure
+- ExperienceTimeline.tsx content
+- ProjectModal.tsx content and Mermaid diagrams
+- server/ directory and /api/contact route
+- .env file
+- vercel.json
+
+=== AFTER CHANGES ===
+- Run npm run build and confirm zero errors
+- Confirm site still works on mobile (all changes must be responsive)
+- Confirm ProjectModal still opens correctly on card click
+- Confirm contact form still submits to /api/contact

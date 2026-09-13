@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 
 interface SectionHeadingProps {
   title: string;
+  number: string;
   subtitle?: string;
   alignment?: "left" | "center";
 }
 
-export function SectionHeading({ title, subtitle, alignment = "center" }: SectionHeadingProps) {
+export function SectionHeading({ title, number, subtitle, alignment = "center" }: SectionHeadingProps) {
   return (
     <div className={`mb-16 ${alignment === "center" ? "text-center" : "text-left"}`}>
       <motion.div
@@ -20,7 +21,10 @@ export function SectionHeading({ title, subtitle, alignment = "center" }: Sectio
             {subtitle}
           </span>
         )}
-        <h2 className="text-4xl md:text-5xl font-display font-semibold text-foreground tracking-tight leading-none mb-6">
+        <h2 className={`mb-6 flex flex-wrap items-baseline gap-3 text-4xl font-display font-semibold leading-none tracking-tight text-foreground md:text-5xl ${
+          alignment === "center" ? "justify-center" : ""
+        }`}>
+          <span className="font-mono text-xs font-normal text-primary opacity-40">[ {number} ]</span>
           {title}
         </h2>
         <div 

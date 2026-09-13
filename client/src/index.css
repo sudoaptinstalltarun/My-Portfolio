@@ -38,6 +38,7 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
+    cursor: none;
      background-color: #050505;
     background-image: 
        radial-gradient(at 0% 0%, rgba(0, 212, 255, 0.04) 0px, transparent 50%),
@@ -55,6 +56,54 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+.hero-scanline {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(255, 255, 255, 0.3) 4px
+  );
+  opacity: 0.03;
+}
+
+.hero-glitch {
+  animation: hero-glitch 600ms steps(2, end) 1 both;
+}
+
+.skill-badge {
+  transition: text-shadow 200ms ease;
+}
+
+.skill-badge-text {
+  transition: text-shadow 200ms ease;
+}
+
+.skill-badge:hover .skill-badge-text {
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.8);
+}
+
+.contact-terminal {
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.status-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: #00ff88;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.7);
+  animation: status-pulse 1s ease-in-out infinite;
 }
 
 .aceternity-dots {
@@ -112,6 +161,48 @@ html {
   to { transform: translate3d(-10%, -10%, 0) rotate(-8deg); }
 }
 
+@keyframes hero-glitch {
+  0% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+  }
+  12% {
+    clip-path: inset(12% 0 68% 0);
+    transform: translate3d(-3px, 1px, 0);
+  }
+  24% {
+    clip-path: inset(64% 0 18% 0);
+    transform: translate3d(3px, -1px, 0);
+  }
+  40% {
+    clip-path: inset(30% 0 42% 0);
+    transform: translate3d(-2px, 0, 0);
+  }
+  58% {
+    clip-path: inset(76% 0 5% 0);
+    transform: translate3d(2px, 1px, 0);
+  }
+  76% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(-1px, 0, 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes status-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -119,7 +210,9 @@ html {
 
   .moving-border-spin,
   .aceternity-aurora-one,
-  .aceternity-aurora-two {
+  .aceternity-aurora-two,
+  .hero-glitch,
+  .status-dot {
     animation: none;
   }
 }

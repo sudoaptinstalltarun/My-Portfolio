@@ -44,6 +44,7 @@ import {
 } from "@/hooks/use-portfolio";
 import profileImg from "@assets/482024-01-25_15-28-17_1771426037578.jpg";
 import { AuroraBackground, CardHoverEffect, MovingBorder, TextGenerateEffect } from "@/components/ui/aceternity";
+import { Magnetic } from "@/components/Magnetic";
 
 // Animation Variants
 const containerVariants = {
@@ -135,6 +136,7 @@ export default function Home() {
           className="relative min-h-screen flex items-center pt-24 pb-16"
         >
           <AuroraBackground className="absolute inset-0" />
+          <div aria-hidden="true" className="hero-scanline absolute inset-0 z-[1]" />
           <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
             <motion.div 
               variants={containerVariants}
@@ -153,7 +155,7 @@ export default function Home() {
                 
                 <motion.h1 
                   variants={itemVariants} 
-                  className="text-5xl md:text-7xl font-display font-light tracking-tighter leading-none text-white"
+                  className="hero-glitch text-5xl md:text-7xl font-display font-light tracking-tighter leading-none text-white"
                 >
                   <TextGenerateEffect words="Tarun" className="mr-[0.28em]" />
                   <span className="font-bold text-primary">
@@ -169,25 +171,29 @@ export default function Home() {
                 </motion.p>
                 
                 <motion.div variants={itemVariants} className="flex flex-wrap gap-4 select-none">
-                  <Button 
-                    size="sm" 
-                    className="h-10 rounded-full px-6 text-xs font-mono tracking-wider uppercase bg-white text-black hover:bg-white/90 transition-all shadow-none" 
-                    asChild
-                  >
-                    <ScrollLink to="projects" smooth={true} duration={500} offset={-80} className="cursor-pointer">
-                      View Projects
-                    </ScrollLink>
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="h-10 rounded-full px-6 text-xs font-mono tracking-wider uppercase border-white/[0.08] text-white bg-transparent hover:bg-white/5 transition-all shadow-none" 
-                    asChild
-                  >
-                    <ScrollLink to="simulators" smooth={true} duration={500} offset={-80} className="cursor-pointer">
-                      Try Simulators
-                    </ScrollLink>
-                  </Button>
+                  <Magnetic>
+                    <Button 
+                      size="sm" 
+                      className="h-10 rounded-full px-6 text-xs font-mono tracking-wider uppercase bg-white text-black hover:bg-white/90 transition-all shadow-none" 
+                      asChild
+                    >
+                      <ScrollLink to="projects" smooth={true} duration={500} offset={-80} className="cursor-pointer">
+                        View Projects
+                      </ScrollLink>
+                    </Button>
+                  </Magnetic>
+                  <Magnetic>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="h-10 rounded-full px-6 text-xs font-mono tracking-wider uppercase border-white/[0.08] text-white bg-transparent hover:bg-white/5 transition-all shadow-none" 
+                      asChild
+                    >
+                      <ScrollLink to="simulators" smooth={true} duration={500} offset={-80} className="cursor-pointer">
+                        Try Simulators
+                      </ScrollLink>
+                    </Button>
+                  </Magnetic>
                 </motion.div>
               </div>
 
@@ -280,8 +286,8 @@ export default function Home() {
                       <h5 className="font-mono text-[9px] uppercase text-primary font-bold tracking-wider">{skillGroup.category}</h5>
                       <div className="flex flex-wrap gap-1.5">
                         {skillGroup.items.map((skill: string) => (
-                          <MovingBorder key={skill} className="rounded-sm">
-                            <span className="block px-2 py-0.5 text-[9px] font-mono text-muted-foreground">
+                          <MovingBorder key={skill} className="skill-badge rounded-sm">
+                            <span className="skill-badge-text block px-2 py-0.5 text-[9px] font-mono text-muted-foreground">
                               {skill}
                             </span>
                           </MovingBorder>
@@ -360,7 +366,7 @@ export default function Home() {
       {/* 02 / EXPERIENCE SECTION */}
       <section id="experience" className="py-24 border-b border-white/[0.04]">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-          <SectionHeading title="Work Experience" subtitle="Professional Timeline" alignment="left" />
+          <SectionHeading number="01" title="Work Experience" subtitle="Professional Timeline" alignment="left" />
           
           <div className="grid lg:grid-cols-12 gap-12 items-start mt-8">
             <div className="lg:col-span-8">
@@ -410,16 +416,20 @@ export default function Home() {
       {/* 03 / PROJECTS SECTION */}
       <section id="projects" className="py-24 border-b border-white/[0.04]">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-          <SectionHeading title="Featured Projects" subtitle="Robotics & UAV Systems" alignment="left" />
+          <SectionHeading number="02" title="Featured Projects" subtitle="Robotics & UAV Systems" alignment="left" />
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
-            {engineeringProjects.map((project) => (
+          <div className="mt-10 grid grid-cols-1 gap-6 md:auto-rows-[minmax(12rem,auto)] md:grid-cols-4">
+            {engineeringProjects.map((project, index) => (
               <CardHoverEffect
                 key={project.id} 
-                className="cursor-pointer rounded-lg"
+                className={`cursor-pointer rounded-lg ${
+                  index < 2
+                    ? "min-h-[24rem] md:col-span-2 md:row-span-2 md:min-h-0"
+                    : "min-h-[20rem] md:col-span-1 md:min-h-0"
+                }`}
                 onClick={() => openProjectDetails(project)}
               >
-                <div className="p-6 flex flex-col justify-between flex-grow">
+                <div className="flex h-full flex-col justify-between p-6">
                   <div className="space-y-4">
                     <div className="flex justify-between items-start gap-4">
                       <h3 className="text-lg font-display font-semibold text-white group-hover:text-primary transition-colors leading-tight">
@@ -479,7 +489,7 @@ export default function Home() {
       {/* 04 / SIMULATORS SECTION */}
       <section id="simulators" className="py-24 border-b border-white/[0.04] bg-white/[0.005]">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-          <SectionHeading title="Robotics Simulators" subtitle="Interactive PID & Pathfinding" alignment="center" />
+          <SectionHeading number="03" title="Robotics Simulators" subtitle="Interactive PID & Pathfinding" alignment="center" />
           
           {/* Dashboard Tab Bar */}
           <div className="flex flex-wrap justify-center gap-2 mb-10 select-none border-b border-white/[0.05] pb-2 max-w-3xl mx-auto">
@@ -516,7 +526,7 @@ export default function Home() {
       {/* 05 / CONTACT SECTION */}
       <section id="contact" className="py-24">
         <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-          <SectionHeading title="Contact Me" subtitle="Get In Touch" alignment="center" />
+          <SectionHeading number="04" title="Contact Me" subtitle="Get In Touch" alignment="center" />
           
           <div className="grid lg:grid-cols-12 gap-12 items-stretch mt-8">
             {/* Info Column (col-span-5) */}
@@ -553,7 +563,16 @@ export default function Home() {
             </div>
 
             {/* Form Column (col-span-7) */}
-            <div className="lg:col-span-7 border border-white/[0.05] p-6 rounded-lg bg-black/30 relative flex flex-col justify-center min-h-[360px] overflow-hidden">
+            <div className="contact-terminal lg:col-span-7 relative flex min-h-[360px] flex-col overflow-hidden rounded-lg">
+              <div className="flex items-center gap-1.5 border-b border-primary/20 px-6 py-3 select-none">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-green-400/80" />
+                <span className="ml-3 font-mono text-[9px] uppercase tracking-wider text-primary/70">
+                  COMM_TX // SECURE_CHANNEL
+                </span>
+              </div>
+              <div className="flex flex-1 flex-col justify-center p-6">
               {contactSuccess ? (
                 <motion.div 
                   initial={{ opacity: 0 }}
@@ -628,13 +647,14 @@ export default function Home() {
                   </Button>
                 </form>
               )}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-white/[0.04] bg-[#020202]">
+      <footer className="border-t border-primary/20 bg-[#020202] py-12">
         <div className="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-6 max-w-5xl">
           <div className="flex items-center gap-2 select-none">
             <span className="font-mono font-bold text-sm tracking-wider text-white">
@@ -643,12 +663,16 @@ export default function Home() {
           </div>
           
           <div className="flex items-center gap-6 select-none">
-            <a href="https://github.com/sudoaptinstalltarun" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-white transition-colors">
-              <Github className="w-4 h-4" />
-            </a>
-            <a href="https://www.linkedin.com/in/tarun-kumar-885542282/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-white transition-colors">
-              <Linkedin className="w-4 h-4" />
-            </a>
+            <Magnetic>
+              <a href="https://github.com/sudoaptinstalltarun" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-white transition-colors">
+                <Github className="w-4 h-4" />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a href="https://www.linkedin.com/in/tarun-kumar-885542282/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-white transition-colors">
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </Magnetic>
             <Button variant="ghost" size="sm" className="rounded-full border border-white/[0.08] text-white hover:bg-white/5 font-mono text-[9px] tracking-wider uppercase ml-4 h-8 px-4" asChild>
               <a href="mailto:tarunkotian10@gmail.com">
                 Email
@@ -656,8 +680,9 @@ export default function Home() {
             </Button>
           </div>
           
-          <p className="text-muted-foreground text-[10px] font-mono tracking-wider uppercase select-none">
-            © {new Date().getFullYear()} // System Offline
+          <p className="flex items-center gap-2 text-[10px] font-mono tracking-wider uppercase text-muted-foreground select-none">
+            <span className="status-dot" aria-hidden="true" />
+            © {new Date().getFullYear()} // All Systems Nominal
           </p>
         </div>
       </footer>
