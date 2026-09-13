@@ -1,0 +1,57 @@
+I have an existing Next.js portfolio already deployed on Vercel.
+DO NOT rebuild from scratch. Only update the visual theme and styling.
+Keep all existing content, sections, routes, and logic exactly as they are.
+
+=== TASK: UPGRADE THEME TO ACETERNITY UI ===
+
+Install these packages:
+npm install aceternity-ui framer-motion clsx tailwind-merge @tabler/icons-react
+
+=== COMPONENT REPLACEMENTS ===
+
+1. HERO SECTION
+   - Add "Aurora Background" or "Spotlight" from Aceternity UI behind
+     the hero text
+   - Wrap hero heading with "Text Generate Effect" for animated entrance
+   - Add subtle dot-grid background (opacity 0.1) using Aceternity
+     "Background Dots" component
+
+2. NAVBAR
+   - Replace existing navbar with Aceternity "Floating Navbar"
+   - Keep same nav links, just swap the component
+
+3. PROJECTS SECTION
+   - Replace current project cards with Aceternity "3D Card Effect"
+     or "Card Hover Effect"
+   - Keep all existing project content (titles, descriptions, links)
+   - Add a glowing cyan border (#00d4ff) on card hover
+
+4. SKILLS / TECH STACK
+   - Wrap each skill badge with Aceternity "Moving Border" component
+   - Keep the same skill categories and text
+
+5. TIMELINE / EXPERIENCE
+   - Replace current experience layout with Aceternity "Timeline"
+     component
+   - Keep all existing company names, roles, dates, and bullet points
+
+6. GENERAL STYLING UPDATES
+   - Background: change to #050505 (near black)
+   - Primary accent color: #00d4ff (cyan)
+   - Secondary accent: #8b5cf6 (purple)
+   - Font: keep existing or set Inter for body, JetBrains Mono for
+     code/terminal text elements
+   - Add smooth page-load fade-in animation using Framer Motion
+   - Add smooth scroll behavior: scroll-behavior: smooth in globals.css
+   - Section headings: add a thin cyan underline accent (2px, 40px wide)
+
+=== DO NOT CHANGE ===
+- All text content, names, project descriptions, links
+- Page routing and structure
+- Contact form logic
+- Existing environment variables or API keys
+- vercel.json or deployment config
+
+=== AFTER CHANGES ===
+- Run npm run build and confirm zero build errors before finishing
+- Make sure site is still fully mobile responsive

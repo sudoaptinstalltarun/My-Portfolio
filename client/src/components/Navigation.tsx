@@ -30,8 +30,8 @@ export function Navigation() {
       <div 
         className={`flex items-center justify-between px-6 py-2.5 rounded-full transition-all duration-500 border ${
           scrolled 
-            ? "bg-[#060606]/80 backdrop-blur-lg border-white/[0.06] shadow-xl shadow-black/50" 
-            : "bg-[#060606]/30 backdrop-blur-md border-white/[0.02]"
+             ? "bg-[#050505]/85 backdrop-blur-xl border-primary/20 shadow-xl shadow-cyan-950/20" 
+             : "bg-[#050505]/45 backdrop-blur-md border-white/[0.08]"
         }`}
       >
         <ScrollLink 
@@ -56,7 +56,7 @@ export function Navigation() {
               duration={500}
               offset={-80}
               activeClass="text-primary font-medium"
-              className="relative text-[11px] font-mono tracking-wider text-muted-foreground hover:text-white cursor-pointer transition-colors py-1"
+             className="relative text-[11px] font-mono tracking-wider text-muted-foreground hover:text-primary cursor-pointer transition-colors py-1 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
             >
               {link.name}
             </ScrollLink>
@@ -76,7 +76,7 @@ export function Navigation() {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-muted-foreground hover:text-white p-2 transition-colors"
+             className="md:hidden text-muted-foreground hover:text-primary p-2 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

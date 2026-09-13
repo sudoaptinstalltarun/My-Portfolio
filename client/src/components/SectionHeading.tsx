@@ -24,7 +24,7 @@ export function SectionHeading({ title, subtitle, alignment = "center" }: Sectio
           {title}
         </h2>
         <div 
-          className={`h-1 w-16 bg-muted rounded-full ${
+          className={`h-0.5 w-10 bg-primary rounded-full shadow-[0_0_14px_rgba(0,212,255,0.75)] ${
             alignment === "center" ? "mx-auto" : ""
           }`}
         />

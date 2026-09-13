@@ -43,6 +43,7 @@ import {
   useContact 
 } from "@/hooks/use-portfolio";
 import profileImg from "@assets/482024-01-25_15-28-17_1771426037578.jpg";
+import { AuroraBackground, CardHoverEffect, MovingBorder, TextGenerateEffect } from "@/components/ui/aceternity";
 
 // Animation Variants
 const containerVariants = {
@@ -133,6 +134,7 @@ export default function Home() {
           id="hero" 
           className="relative min-h-screen flex items-center pt-24 pb-16"
         >
+          <AuroraBackground className="absolute inset-0" />
           <div className="container mx-auto px-4 md:px-6 relative z-10 max-w-5xl">
             <motion.div 
               variants={containerVariants}
@@ -153,7 +155,10 @@ export default function Home() {
                   variants={itemVariants} 
                   className="text-5xl md:text-7xl font-display font-light tracking-tighter leading-none text-white"
                 >
-                  Tarun <span className="font-bold text-primary">Kumar</span>
+                  <TextGenerateEffect words="Tarun" className="mr-[0.28em]" />
+                  <span className="font-bold text-primary">
+                    <TextGenerateEffect words="Kumar" delay={0.12} />
+                  </span>
                 </motion.h1>
                 
                 <motion.p 
@@ -275,9 +280,11 @@ export default function Home() {
                       <h5 className="font-mono text-[9px] uppercase text-primary font-bold tracking-wider">{skillGroup.category}</h5>
                       <div className="flex flex-wrap gap-1.5">
                         {skillGroup.items.map((skill: string) => (
-                          <span key={skill} className="text-[9px] font-mono text-muted-foreground bg-white/5 border border-white/[0.02] px-2 py-0.5 rounded-sm">
-                            {skill}
-                          </span>
+                          <MovingBorder key={skill} className="rounded-sm">
+                            <span className="block px-2 py-0.5 text-[9px] font-mono text-muted-foreground">
+                              {skill}
+                            </span>
+                          </MovingBorder>
                         ))}
                       </div>
                     </div>
@@ -407,9 +414,9 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
             {engineeringProjects.map((project) => (
-              <div 
+              <CardHoverEffect
                 key={project.id} 
-                className="flex flex-col border border-white/[0.05] rounded-lg bg-black/20 overflow-hidden hover:border-primary/[0.15] transition-all duration-300 cursor-pointer group"
+                className="cursor-pointer rounded-lg"
                 onClick={() => openProjectDetails(project)}
               >
                 <div className="p-6 flex flex-col justify-between flex-grow">
@@ -463,7 +470,7 @@ export default function Home() {
                     )}
                   </div>
                 </div>
-              </div>
+              </CardHoverEffect>
             ))}
           </div>
         </div>

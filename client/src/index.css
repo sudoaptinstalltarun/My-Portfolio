@@ -9,7 +9,7 @@
   --background: 0 0% 2%; /* #050505 */
   --foreground: 210 40% 98%; /* #f8fafc */
   
-  --primary: 217 91% 60%; /* Electric Blue */
+   --primary: 191 100% 50%; /* Aceternity Cyan */
   --primary-foreground: 0 0% 100%;
   
   --secondary: 0 0% 6%; /* #0f0f0f */
@@ -18,12 +18,12 @@
   --muted: 0 0% 6%;
   --muted-foreground: 215 16% 55%; /* Slate Muted */
   
-  --accent: 38 92% 50%; /* Amber/Orange */
+   --accent: 262 83% 58%; /* Aceternity Purple */
   --accent-foreground: 0 0% 100%;
   
   --border: 0 0% 10%; /* #1a1a1a */
   --input: 0 0% 10%;
-  --ring: 217 91% 60%;
+   --ring: 191 100% 50%;
   
   --radius: 0.25rem; /* Sleeker, sharper borders */
   --font-sans: 'Inter', sans-serif;
@@ -38,10 +38,10 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
-    background-color: #030303;
+     background-color: #050505;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.03) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.02) 0px, transparent 50%),
+       radial-gradient(at 0% 0%, rgba(0, 212, 255, 0.04) 0px, transparent 50%),
+       radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.035) 0px, transparent 50%),
       linear-gradient(rgba(255, 255, 255, 0.007) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.007) 1px, transparent 1px);
     background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
@@ -50,6 +50,77 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     @apply tracking-tight font-medium;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.aceternity-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+}
+
+.aceternity-aurora {
+  position: absolute;
+  width: 42rem;
+  height: 24rem;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.18;
+  transform: translateZ(0);
+}
+
+.aceternity-aurora-one {
+  top: -10rem;
+  left: 8%;
+  background: #00d4ff;
+  animation: aurora-drift-one 14s ease-in-out infinite alternate;
+}
+
+.aceternity-aurora-two {
+  right: -8rem;
+  bottom: -8rem;
+  background: #8b5cf6;
+  animation: aurora-drift-two 16s ease-in-out infinite alternate;
+}
+
+.moving-border {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.moving-border-spin {
+  background: conic-gradient(from 90deg at 50% 50%, transparent 0deg, #00d4ff 95deg, #8b5cf6 180deg, transparent 275deg);
+  animation: moving-border-spin 4s linear infinite;
+}
+
+@keyframes moving-border-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes aurora-drift-one {
+  from { transform: translate3d(-3%, 0, 0) rotate(-8deg); }
+  to { transform: translate3d(12%, 8%, 0) rotate(8deg); }
+}
+
+@keyframes aurora-drift-two {
+  from { transform: translate3d(4%, 2%, 0) rotate(10deg); }
+  to { transform: translate3d(-10%, -10%, 0) rotate(-8deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .moving-border-spin,
+  .aceternity-aurora-one,
+  .aceternity-aurora-two {
+    animation: none;
   }
 }
 
